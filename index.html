@@ -524,7 +524,7 @@ const PROGRAMME = {
   // 01 Analyse
   $("analyse-zones").innerHTML = P.analyse.map(z => `
     <div class="sous"><h3>${esc(z.zone)}</h3></div>
-    <div class="traits">${z.points.map(p => `<div class="trait"><h4>${ou(p.trait, "Caractéristique")}</h4><p>${ou(p.effet, "Ce que ça implique pour ton entraînement")}</p></div>`).join("")}</div>
+    <div class="traits">${z.points.map(p => `<div class="trait"><h4>${ou(p.trait, "Caractéristique")}</h4>${p.trait && !p.effet ? "" : `<p>${ou(p.effet, "Ce que ça implique pour ton entraînement")}</p>`}</div>`).join("")}</div>
     ${(z.encadres || []).map(e => `<div class="encadre${e.alerte ? " alerte" : ""}"><p class="k">${esc(e.titre)}</p><p>${ou(e.texte, "à compléter")}</p></div>`).join("")}
   `).join("");
 
