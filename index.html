@@ -169,6 +169,56 @@ td{padding:11px 14px;border-top:1px solid var(--ligne);font-variant-numeric:tabu
 .etape .encadre.alerte{background:linear-gradient(160deg,rgba(122,20,20,.22),var(--noir) 60%)}
 .etape .tab{background:var(--noir)}
 
+/* Échauffement */
+.sans-photo{margin-bottom:28px}
+.sans-photo h2{font-size:clamp(28px,4.2vw,42px);font-weight:700;line-height:1.1}
+.panel[hidden]{display:none}
+.onglets{display:inline-flex;gap:4px;padding:5px;border-radius:var(--pill);background:var(--anthracite-2);border:1px solid var(--ligne);margin-bottom:28px;max-width:100%}
+.onglets button{font:inherit;font-size:14px;font-weight:600;color:var(--gris);background:none;border:0;padding:10px 20px;border-radius:var(--pill);cursor:pointer;white-space:nowrap}
+.onglets button[aria-selected="true"]{background:var(--ecru);color:var(--noir)}
+.onglets button:hover:not([aria-selected="true"]){color:var(--ecru)}
+.panel{display:flex;flex-direction:column;gap:14px}
+.ech-intro{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;max-width:78ch}
+.ech-intro p{flex:1 1 320px;color:var(--gris)}
+.ech-intro b{color:var(--ecru);font-weight:600}
+.duree{font-size:13px;font-weight:700;letter-spacing:.5px;color:var(--ecru);background:var(--rouge);padding:6px 14px;border-radius:var(--pill);white-space:nowrap}
+.bloc-ech{background:var(--anthracite-2);border:1px solid var(--ligne);border-radius:var(--r-lg);padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.bloc-head{display:flex;align-items:center;gap:12px}
+.bloc-head h3{font-size:18px;font-weight:600}
+.pastille{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--ligne-forte);font-size:13px;font-weight:600;color:var(--rouge);flex:none}
+.ech-exos{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px}
+.ech-exos li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:9px 12px;border-radius:var(--r-sm);background:rgba(242,237,226,.03)}
+.ech-exos span{font-weight:500;font-size:14.5px;min-width:0}
+.ech-exos em{font-style:normal;color:var(--gris);font-weight:400;font-size:13px}
+.ech-exos b{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;background:var(--noir);border:1px solid var(--ligne);padding:3px 10px;border-radius:var(--pill)}
+.ech-exos a{font-size:12.5px;font-weight:600;color:var(--ecru);text-decoration:none;border:1px solid var(--braise);padding:4px 11px;border-radius:var(--pill);white-space:nowrap}
+.ech-exos a:hover{background:var(--braise)}
+.tours{font-size:13px;color:var(--gris);font-weight:300}
+.obj,.ech-txt{font-size:14.5px;max-width:74ch}
+.obj{color:var(--gris)}
+.obj b{color:var(--ecru);font-weight:600}
+.paliers{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.paliers div{background:var(--noir);border:1px solid var(--ligne);border-radius:var(--r-md);padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.paliers span{font-size:12px;color:var(--gris)}
+.paliers b{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.paliers em{font-style:normal;font-size:13.5px;font-weight:500}
+.bloc-ech .encadre{margin-top:2px;background:var(--noir)}
+.bloc-ech .encadre.alerte{background:linear-gradient(160deg,rgba(122,20,20,.22),var(--noir) 60%)}
+.regles-ech{border-radius:var(--r-lg);padding:24px;border:1px solid var(--braise);display:flex;flex-direction:column;gap:14px;background:linear-gradient(160deg,rgba(122,20,20,.16),var(--anthracite-2) 55%)}
+.regles-ech .k{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--rouge)}
+.regles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.regles-grid div{background:var(--noir);border-radius:var(--r-md);padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.regles-grid b{font-size:15px;font-weight:700}
+.regles-grid span{font-size:13.5px;color:var(--gris)}
+.regles-ech > p:last-child{font-size:14.5px;max-width:74ch}
+@media (max-width:760px){
+  .bloc-ech{padding:18px 16px}
+  .ech-exos li{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
+  .ech-exos a{grid-column:1/-1;justify-self:start}
+  .regles-grid{grid-template-columns:1fr}
+  .onglets button{padding:9px 14px}
+}
+
 /* CTA */
 .cta{padding-block:24px 72px}
 .cta-card{position:relative;overflow:hidden;border-radius:var(--r-xl);background:var(--anthracite-2);border:1px solid var(--ligne);padding:40px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
@@ -228,7 +278,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
       <nav class="sommaire" aria-label="Sommaire">
         <a href="#analyse"><b>01</b><span>Analyse morphologique</span></a>
         <a href="#programme"><b>02</b><span>Programme d'entraînement</span></a>
-        <a href="#autonomie"><b>03</b><span>Progresser en autonomie</span></a>
+        <a href="#echauffement"><b>03</b><span>Échauffement</span></a>
+        <a href="#autonomie"><b>04</b><span>Progresser en autonomie</span></a>
       </nav>
     </div>
     <div class="portrait fondu" role="img" aria-label="Evan Merioua en salle, pendant une séance de coaching"><span class="ph" style="background-image:url('assets/coaching.jpg');background-position:55% 40%"></span></div>
@@ -296,13 +347,117 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
     </div>
   </section>
 
-  <!-- ===================== 03 AUTONOMIE (commun à tous) ===================== -->
+  <!-- ===================== 03 ÉCHAUFFEMENT (commun à tous) ===================== -->
+  <section class="partie" id="echauffement">
+    <div class="wrap">
+      <div class="ouverture-txt sans-photo">
+        <span class="num" aria-hidden="true">03</span>
+        <p class="eyebrow">Échauffement</p>
+        <h2>Bien démarrer chaque séance</h2>
+      </div>
+
+      <div class="onglets" role="tablist" aria-label="Type d'échauffement">
+        <button type="button" role="tab" id="tab-haut" aria-controls="panel-haut" aria-selected="true">Haut du corps</button>
+        <button type="button" role="tab" id="tab-bas" aria-controls="panel-bas" aria-selected="false" tabindex="-1">Bas du corps</button>
+      </div>
+
+      <!-- HAUT DU CORPS -->
+      <div class="panel" role="tabpanel" id="panel-haut" aria-labelledby="tab-haut">
+        <div class="ech-intro">
+          <span class="duree">≤ 10 min</span>
+          <p><b>Objectif :</b> Préparer épaules, omoplates, coudes, bras et système nerveux sans générer de fatigue, afin d'optimiser les performances sur la/les séries effectives.</p>
+        </div>
+
+        <div class="bloc-ech">
+          <div class="bloc-head"><span class="pastille">1</span><h3>Activation scapulaire &amp; épaules</h3></div>
+          <ul class="ech-exos">
+            <li><span>Spider crawls <em>(1 rep = 1 montée + 1 descente)</em></span><b>x5</b><a href="https://youtu.be/Izx_JoAsK14?t=73" target="_blank" rel="noopener">Vidéo ↗</a></li>
+            <li><span>Band pull-apart</span><b>x20</b><a href="https://youtu.be/ts9JxXPWKA4?t=176" target="_blank" rel="noopener">Vidéo ↗</a></li>
+            <li><span>Over and back</span><b>x20</b><a href="https://youtu.be/ts9JxXPWKA4?t=98" target="_blank" rel="noopener">Vidéo ↗</a></li>
+          </ul>
+          <p class="tours">→ 1 à 2 tours · Si 2 tours, prendre 60 s de repos · 1 tour suffit pour la majorité des pratiquants</p>
+          <p class="obj"><b>Objectif :</b> Stabilité scapulaire, mobilité active des épaules, mise en route articulaire.</p>
+        </div>
+
+        <div class="bloc-ech">
+          <div class="bloc-head"><span class="pastille">2</span><h3>Activation coudes / bras</h3></div>
+          <ul class="ech-exos">
+            <li><span>Extensions triceps overhead à la corde</span><b>x20</b><a href="https://youtu.be/x6d9NN5-gJA?t=720" target="_blank" rel="noopener">Vidéo ↗</a></li>
+            <li><span>Curl marteau à la poulie corde</span><b>x20</b><a href="https://youtu.be/x6d9NN5-gJA?t=699" target="_blank" rel="noopener">Vidéo ↗</a></li>
+            <li><span>Extensions triceps à la corde</span><b>x20</b><a href="https://youtu.be/x6d9NN5-gJA?t=811" target="_blank" rel="noopener">Vidéo ↗</a></li>
+            <li><span>Élévations frontales en supination aux haltères</span><b>x20</b><a href="https://youtu.be/x6d9NN5-gJA?t=1276" target="_blank" rel="noopener">Vidéo ↗</a></li>
+          </ul>
+          <p class="tours">→ 1 à 2 tours · Si 2 tours, prendre 60 s de repos · 1 tour suffit pour la majorité</p>
+          <p class="obj"><b>Recommandation :</b> Droite/gauche sur les exercices 1 et 3, exercice 2 et 3 en bilatéral.</p>
+          <p class="obj"><b>Objectif :</b> Lubrifier les coudes, préparer biceps et triceps, réduire le risque tendineux.</p>
+        </div>
+
+        <div class="bloc-ech">
+          <div class="bloc-head"><span class="pastille">3</span><h3>Coiffe des rotateurs</h3></div>
+          <ul class="ech-exos">
+            <li><span>Rotation interne à la poulie debout</span><b>x20</b><a href="https://youtu.be/x6d9NN5-gJA?t=1021" target="_blank" rel="noopener">Vidéo ↗</a></li>
+            <li><span>Rotation externe à la poulie debout</span><b>x20</b><a href="https://youtu.be/x6d9NN5-gJA?t=1145" target="_blank" rel="noopener">Vidéo ↗</a></li>
+          </ul>
+          <p class="tours">→ 1 à 2 tours · Si 2 tours, prendre 60 s de repos · 1 tour suffit pour la majorité</p>
+          <p class="obj"><b>Objectif :</b> Stabilité gléno-humérale, protection de l'épaule avant charges lourdes.</p>
+        </div>
+
+        <div class="bloc-ech">
+          <div class="bloc-head"><span class="pastille">4</span><h3>Exercice 1 : montée en charge structurée</h3></div>
+          <p class="ech-txt">Le but ici est de rentrer progressivement dans la séance, sans fatigue inutile, tout en préparant articulations, pattern moteur et système nerveux.</p>
+          <p class="ech-txt">La montée en charge suit toujours la même logique :</p>
+          <div class="paliers">
+            <div><span>Série 1 – lubrification</span><b>40–50 %</b><em>x6–8 reps</em></div>
+            <div><span>Série 2 – pattern moteur</span><b>60–70 %</b><em>x4–5 reps</em></div>
+            <div><span>Série 3 – préparation nerveuse</span><b>75–80 %</b><em>x2–3 reps</em></div>
+          </div>
+          <p class="ech-txt">Puis lancement des séries de travail effectives.</p>
+          <div class="encadre alerte">
+            <p class="k">À respecter</p>
+            <p>Toutes les séries d'échauffement doivent rester loin de l'échec. Aucune brûlure, aucune perte de vitesse.</p>
+            <p>Si une série commence à « coûter » de l'énergie, la charge est déjà trop élevée.</p>
+          </div>
+        </div>
+
+        <div class="bloc-ech">
+          <div class="bloc-head"><span class="pastille">5</span><h3>Exercice 2 : échauffement minimal et ciblé</h3></div>
+          <p class="ech-txt">À ce stade, le corps est déjà préparé. L'objectif n'est plus d'échauffer, mais de se calibrer sur le nouvel exercice.</p>
+          <div class="paliers">
+            <div><span>1 série intermédiaire</span><b>70–75 %</b><em>x4–5 reps</em></div>
+          </div>
+          <p class="ech-txt">Puis lancement des séries de travail.</p>
+          <div class="encadre">
+            <p class="k">Cas particuliers</p>
+            <p>Si l'exercice 2 est très différent mécaniquement de l'exercice 1 (exemple : tirage vertical barre → hip thrust machine) → ajouter 1 série très légère à 40–50 % x6–8 reps.</p>
+            <p>Si besoin de mise en confiance supplémentaire → 2 à 3 reps à 75–80 % suffisent largement.</p>
+          </div>
+        </div>
+
+        <div class="regles-ech">
+          <p class="k">Règles clés à retenir</p>
+          <div class="regles-grid">
+            <div><b>Exercice 1</b><span>préparation complète</span></div>
+            <div><b>Exercice 2</b><span>calibration, contexte</span></div>
+            <div><b>Exercices suivants</b><span>travail uniquement</span></div>
+          </div>
+          <p>S'échauffer sans intention claire ne fait qu'accumuler de la fatigue inutile. Un bon échauffement doit augmenter la stabilité et la performance, jamais les limiter.</p>
+        </div>
+      </div>
+
+      <!-- BAS DU CORPS -->
+      <div class="panel" role="tabpanel" id="panel-bas" aria-labelledby="tab-bas" hidden>
+        <p class="vide">Échauffement bas du corps : à venir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 04 AUTONOMIE (commun à tous) ===================== -->
   <section class="partie" id="autonomie">
     <div class="wrap">
       <div class="ouverture">
         <div class="portrait fondu" role="img" aria-label="Evan Merioua à l'entraînement"><span class="ph" style="background-image:url('assets/tirage.jpg');background-position:60% 45%"></span></div>
         <div class="ouverture-txt">
-          <span class="num" aria-hidden="true">03</span>
+          <span class="num" aria-hidden="true">04</span>
           <p class="eyebrow">Progresser en autonomie</p>
           <h2>Faire évoluer ton programme seul(e)</h2>
           <p class="intro">Cette formule ne comprend pas de suivi en ligne au quotidien : pas de bilans hebdomadaires, pas d'échange continu — en dehors de la validation technique de tes exercices en vidéo (voir plus haut). C'est donc à toi d'ajuster ton entraînement dans le temps : voici les deux leviers à connaître pour le faire intelligemment.</p>
@@ -577,6 +732,22 @@ const PROGRAMME = {
   document.addEventListener("input", ev => {
     const k = ev.target.dataset && ev.target.dataset.k;
     if (k) { carnet[k] = ev.target.value; sauver(); }
+  });
+
+  // Onglets échauffement
+  const tabs = [...document.querySelectorAll('.onglets [role="tab"]')];
+  const choisir = tab => tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+    $(t.getAttribute("aria-controls")).hidden = !on;
+  });
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => choisir(t));
+    t.addEventListener("keydown", e => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      choisir(n); n.focus();
+    });
   });
 
   // Effacer le carnet, confirmation dans la page
