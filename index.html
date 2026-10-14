@@ -56,7 +56,6 @@ ul{margin:0}
 .hero-txt{display:flex;flex-direction:column;gap:20px;min-width:0}
 .hero h1{font-size:clamp(38px,6.6vw,66px);font-weight:700;line-height:1.02;text-transform:uppercase;letter-spacing:.5px}
 .hero-sub{font-size:16px;color:var(--gris);max-width:50ch}
-.hero-date{align-self:flex-start;font-size:12.5px;font-weight:300;letter-spacing:.4px;color:var(--ecru);background:var(--anthracite-2);border:1px solid var(--ligne);padding:7px 14px;border-radius:var(--pill)}
 .portrait{position:relative;aspect-ratio:9/15;max-width:100%;border-radius:var(--r-xl);overflow:hidden;background:var(--anthracite) center/cover no-repeat;box-shadow:0 30px 80px -30px rgba(0,0,0,.9)}
 .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.7),rgba(6,6,6,0) 45%)}
 .portrait .tag{position:absolute;left:16px;bottom:16px;z-index:1;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;background:rgba(10,10,10,.6);border:1px solid rgba(242,237,226,.14);padding:6px 12px 6px 6px;border-radius:var(--pill);backdrop-filter:blur(6px)}
@@ -223,7 +222,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
       <h1>Bienvenue,<br><span id="h-client">[Prénom]</span></h1>
       <span class="barre"></span>
       <p class="hero-sub">Voici ton espace de suivi : ton analyse morphologique de départ, ton programme d'entraînement complet, et toutes les infos utiles pour bien démarrer. Garde cette page sous la main tout au long de ton suivi.</p>
-      <p class="hero-date" id="h-date"></p>
       <nav class="sommaire" aria-label="Sommaire">
         <a href="#analyse"><b>01</b><span>Analyse morphologique</span></a>
         <a href="#programme"><b>02</b><span>Programme d'entraînement</span></a>
@@ -357,6 +355,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
       <div class="etape" style="margin-top:0">
         <h4>Le principe de base</h4>
         <p>Tu démarres sur une base de 3 séries de 8 à 12 répétitions par exercice. Tu restes sur ce format jusqu'à ressentir, en fin de séance, que tu pourrais « en faire plus » — cela peut prendre plusieurs mois, parfois 1 à 2 ans selon les personnes. C'est le signal pour passer à 4 séries.</p>
+        <div class="encadre alerte">
+          <p class="k">Important — où ajouter cette série</p>
+          <p>Quand tu sens que tu peux en faire plus sur une séance, alors que l'intensité est déjà là et que la congestion est déjà bonne, n'ajoute pas une série partout d'un coup. Ajoute-la d'abord sur le <b>mouvement principal</b> de la séance — normalement un polyarticulaire à forte tension d'étirement.</p>
+          <p>Si cette série en plus impacte la suite de la séance (moins de reps, moins de forme, moins de sensations sur les exercices suivants), c'est que c'est encore trop tôt. Essaie alors plutôt d'ajouter la série sur le <b>second exercice principal</b>, et regarde à nouveau si ça impacte la suite — et ainsi de suite, exercice par exercice.</p>
+        </div>
       </div>
       <div class="etape">
         <h4>Passer à une série de plus — la méthode du lissage</h4>
@@ -447,9 +450,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
    ===================================================================== */
 const PROGRAMME = {
   client:      "",          // ex. "Mathis"
-  dateBilan:   "",          // ex. "14/10/2026"
-  validiteDu:  "",          // ex. "14/10"
-  validiteAu:  "",          // ex. "14/04"
 
   /* ---------- 01 ANALYSE MORPHO-ANATOMIQUE ---------- */
   analyse: [
@@ -520,7 +520,6 @@ const PROGRAMME = {
 
   // En-tête
   if (P.client) { $("h-client").textContent = P.client; document.title = "Espace client " + P.client + " · Evan Merioua"; }
-  $("h-date").innerHTML = `Bilan réalisé le ${P.dateBilan ? esc(P.dateBilan) : "[jj/mm/aaaa]"} · Programme valable du ${P.validiteDu ? esc(P.validiteDu) : "[jj/mm]"} au ${P.validiteAu ? esc(P.validiteAu) : "[jj/mm]"}`;
 
   // 01 Analyse
   $("analyse-zones").innerHTML = P.analyse.map(z => `
