@@ -122,6 +122,9 @@ ul{margin:0}
 .exo:nth-child(odd){background:rgba(242,237,226,.025)}
 .exo::before{content:counter(ex);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--ligne-forte);font-size:12px;font-weight:500;color:var(--gris);font-variant-numeric:tabular-nums}
 .exo .nom{font-weight:600;font-size:15px;min-width:0}
+.exo .info{display:block;margin-top:6px;padding:8px 12px;border-left:2px solid var(--braise);border-radius:0 10px 10px 0;background:rgba(242,237,226,.035);font-size:13.5px;font-weight:400;line-height:1.55;color:var(--gris);max-width:70ch}
+.exo:has(.info){align-items:start}
+.exo:has(.info) .presc{margin-top:-2px}
 .exo .presc{font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap;background:var(--noir);border:1px solid var(--ligne);padding:5px 12px;border-radius:var(--pill)}
 .exo .presc .r{color:var(--gris)}
 .seance-note{margin:4px 24px 12px;font-size:13.5px;color:var(--gris);padding:10px 14px;border-radius:var(--r-sm);background:rgba(242,237,226,.03)}
@@ -449,6 +452,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
    - Pour ajouter un point, un exercice ou une séance : copie un bloc { ... }
      et colle-le juste après (virgule entre deux blocs).
    - Pour mettre un mot en gras dans un texte : <b>mot</b>
+   - Pour ajouter une explication sous un exercice : note: "ton texte"
    ===================================================================== */
 const PROGRAMME = {
   client:      "",          // ex. "Mathis"
@@ -488,20 +492,20 @@ const PROGRAMME = {
   seances: [
     { lettre: "A", nom: "", note: "",
       exercices: [
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" }
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" }
       ] },
     { lettre: "B", nom: "", note: "",
       exercices: [
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" },
-        { nom: "", series: "3", reps: "", repos: "" }
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" },
+        { nom: "", series: "3", reps: "", repos: "", note: "" }
       ] }
   ],
 
@@ -551,7 +555,7 @@ const PROGRAMME = {
       const presc = e.reps
         ? `${esc(e.series || "3")} × ${esc(e.reps)}${e.repos ? ` <span class="r">/ repos ${esc(e.repos)}</span>` : ""}`
         : `<span class="vide">${esc(e.series || "3")} × … / repos …</span>`;
-      return `<li class="exo"><span class="nom">${ou(e.nom, "Exercice")}</span><span class="presc">${presc}</span></li>`;
+      return `<li class="exo"><span class="nom">${ou(e.nom, "Exercice")}${e.note ? `<span class="info">${riche(e.note)}</span>` : ""}</span><span class="presc">${presc}</span></li>`;
     }).join("");
     const head = Array.from({ length: nbSem }, (_, k) => `<th>S${k + 1}</th>`).join("");
     const lignes = s.exercices.map((e, i) => `<tr><td class="ex">${ou(e.nom, "Exercice " + (i + 1))}</td>` +
