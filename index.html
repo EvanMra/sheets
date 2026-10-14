@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Programmation Evan Merioua</title>
+<title>Espace client Evan Merioua</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Mise en page : colonne unique sombre façon salle, photos réelles en bandeaux, un seul rouge par bloc. */
+/* Mise en page : colonne unique sombre façon salle, photos réelles en bandeaux entre les 3 parties, un seul rouge par bloc. */
 :root{
   --noir:#0A0A0A;
   --anthracite:#1E1C1B;
@@ -28,377 +28,357 @@
 html,body{margin:0}
 body{
   background:var(--noir);color:var(--ecru);font-family:var(--font);
-  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
 img{max-width:100%}
-.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{text-wrap:balance;margin:0}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
 p{margin:0}
+ul{margin:0}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--rouge)}
 .muted{color:var(--gris)}
 .barre{display:block;width:56px;height:5px;background:var(--rouge)}
+.vide{color:rgba(147,137,122,.5);font-style:italic;font-weight:400}
 :focus-visible{outline:2px solid var(--rouge);outline-offset:2px}
 
 /* ---------- HERO ---------- */
 .hero{border-bottom:1px solid var(--ligne)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:stretch;padding-block:56px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;padding-block:56px}
 .hero-txt{display:flex;flex-direction:column;gap:18px;justify-content:center;min-width:0}
-.hero h1{font-size:clamp(38px,7vw,68px);font-weight:700;line-height:1.02;text-transform:uppercase;letter-spacing:.5px}
-.hero h1 .client{display:block;color:var(--ecru)}
-.hero-sub{font-size:16px;color:var(--gris);max-width:46ch}
-.hero-photo{position:relative;min-height:380px;background:url('assets/dos.jpg') center 30%/cover no-repeat;border:1px solid var(--ligne)}
-.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.75),rgba(6,6,6,.15) 55%)}
-.hero-photo span{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;font-weight:300;letter-spacing:1px;color:var(--ecru)}
-.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:8px}
-.meta div{background:var(--noir);padding:12px 14px;min-width:0}
-.meta dt{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
-.meta dd{margin:2px 0 0;font-weight:600;font-size:15px;overflow-wrap:anywhere}
+.hero h1{font-size:clamp(36px,6.4vw,62px);font-weight:700;line-height:1.04;text-transform:uppercase;letter-spacing:.5px}
+.hero-sub{font-size:16px;color:var(--gris);max-width:52ch}
+.hero-date{font-size:13px;font-weight:300;letter-spacing:.5px;color:var(--gris)}
+.hero-photo{position:relative;min-height:400px;background:url('assets/dos.jpg') center 30%/cover no-repeat;border:1px solid var(--ligne)}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.75),rgba(6,6,6,.12) 55%)}
+.hero-photo span{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;font-weight:300;letter-spacing:1px}
 
-/* ---------- SECTIONS ---------- */
-section{padding-block:64px;border-bottom:1px solid var(--ligne)}
-.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:68ch}
-.sec-head h2{font-size:clamp(24px,3.6vw,32px);font-weight:700}
-.sec-head p{color:var(--gris)}
-.lead{font-size:16px;max-width:66ch}
-.lead + .lead{margin-top:14px}
-.lead strong{font-weight:600}
+.sommaire{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+.sommaire a{background:var(--noir);padding:14px 16px;color:var(--ecru);text-decoration:none;display:flex;flex-direction:column;gap:2px;min-width:0}
+.sommaire a:hover{background:var(--anthracite-2)}
+.sommaire b{font-size:12px;font-weight:600;color:var(--rouge);letter-spacing:1px;font-variant-numeric:tabular-nums}
+.sommaire span{font-size:14px;font-weight:600;line-height:1.3}
 
-.avertir{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
-.avertir div{background:var(--anthracite-2);border:1px solid var(--ligne);padding:18px 20px}
-.avertir h3{font-size:15px;font-weight:600;margin-bottom:6px}
-.avertir p{font-size:14px;color:var(--gris)}
+/* ---------- PARTIES ---------- */
+.partie{padding-block:64px;border-bottom:1px solid var(--ligne)}
+.partie-head{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;max-width:68ch}
+.partie-head h2{font-size:clamp(28px,4.2vw,40px);font-weight:700;line-height:1.1}
+.partie-head p{color:var(--gris);font-size:16px}
+.sous{display:flex;align-items:center;gap:14px;margin:48px 0 20px}
+.sous:first-of-type{margin-top:0}
+.sous h3{font-size:20px;font-weight:600;white-space:nowrap}
+.sous::after{content:"";flex:1;height:1px;background:var(--ligne)}
+.texte{max-width:68ch;display:flex;flex-direction:column;gap:14px;font-size:15.5px}
+.texte b,.texte strong{font-weight:600}
 
-/* Légende */
-.legende{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
-.legende div{background:var(--noir);padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.legende b{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
-.legende span{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris);font-weight:600}
-.legende p{font-size:14px;color:var(--gris)}
+/* Analyse */
+.traits{display:flex;flex-direction:column;border-top:1px solid var(--ligne)}
+.trait{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px 32px;padding:18px 0;border-bottom:1px solid var(--ligne)}
+.trait h4{font-size:16px;font-weight:600;line-height:1.4}
+.trait p{color:var(--gris);font-size:14.5px}
 
-/* Semaine */
-.semaine{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
-.jour{border:1px solid var(--ligne);padding:14px 10px;min-height:96px;display:flex;flex-direction:column;gap:6px;background:var(--anthracite-2)}
-.jour .j{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
-.jour .s{font-weight:600;font-size:14px;line-height:1.3;overflow-wrap:anywhere}
-.jour.repos{background:transparent}
-.jour.repos .s{color:var(--gris);font-weight:400}
-.jour.on{border-color:var(--braise)}
-.jour.on .j{color:var(--rouge)}
+.encadre{border:1px solid var(--ligne-forte);background:var(--anthracite-2);padding:18px 22px;margin-top:16px;display:flex;flex-direction:column;gap:6px;max-width:76ch}
+.encadre .k{font-size:11.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--gris)}
+.encadre.alerte{border-color:var(--braise)}
+.encadre.alerte .k{color:var(--rouge)}
+.encadre p{font-size:14.5px}
+
+/* Signes */
+.signes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:6px}
+.signe{border:1px solid var(--ligne);padding:16px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.signe .k{font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase}
+.signe.moins .k{color:var(--gris)}
+.signe.plus .k{color:var(--ecru)}
+.signe p{font-size:14.5px;color:var(--gris)}
 
 /* Séances */
 .seances{display:flex;flex-direction:column;gap:28px}
 .seance{background:var(--anthracite-2);border:1px solid var(--ligne)}
-.seance-top{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--ligne)}
-.seance-top h3{font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.seance-top h3 em{font-style:normal;color:var(--rouge);margin-right:10px}
-.seance-top p{font-size:14px;color:var(--gris)}
-.echauf{padding:12px 22px;font-size:13.5px;color:var(--gris);border-bottom:1px solid var(--ligne)}
-.echauf b{color:var(--ecru);font-weight:600}
-.table-scroll{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
-th{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--gris);text-align:left;padding:10px 12px;border-bottom:1px solid var(--ligne-forte);white-space:nowrap}
-td{padding:12px;border-bottom:1px solid var(--ligne);vertical-align:top;font-variant-numeric:tabular-nums}
-tr:last-child td{border-bottom:none}
-td.n{color:var(--gris);width:34px;font-weight:300}
-td.ex{font-weight:600;min-width:170px}
-td.note{color:var(--gris);font-size:13px;min-width:160px}
-.vide{color:rgba(147,137,122,.45);font-weight:400;font-style:italic}
-.carnet{border-top:1px solid var(--ligne)}
-.carnet summary{cursor:pointer;padding:14px 22px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ecru);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.seance-top{display:flex;gap:16px;align-items:baseline;padding:20px 22px;border-bottom:1px solid var(--ligne)}
+.seance-top .k{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--rouge);white-space:nowrap}
+.seance-top h3{font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.exos{list-style:none;padding:0;margin:0;counter-reset:ex}
+.exo{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;padding:14px 22px;border-bottom:1px solid var(--ligne);counter-increment:ex}
+.exo::before{content:counter(ex,decimal-leading-zero);font-size:12px;font-weight:300;color:var(--gris);font-variant-numeric:tabular-nums}
+.exo .nom{font-weight:600;font-size:15px;min-width:0}
+.exo .presc{font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap;text-align:right}
+.exo .presc .r{color:var(--gris)}
+.seance-note{padding:14px 22px;font-size:13.5px;color:var(--gris);border-bottom:1px solid var(--ligne)}
+
+.carnet summary{cursor:pointer;padding:14px 22px;font-size:12.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:12px}
 .carnet summary::-webkit-details-marker{display:none}
 .carnet summary::after{content:"+";color:var(--rouge);font-weight:700}
 .carnet[open] summary::after{content:"–"}
+.carnet-aide{padding:0 22px 12px;font-size:12.5px;font-weight:300;color:var(--gris)}
+.table-scroll{overflow-x:auto}
 .carnet .table-scroll{padding:0 22px 18px}
-.carnet table{min-width:520px}
-.carnet td{padding:6px}
-.carnet td.ex{font-size:13px;padding-left:0}
-.carnet input{width:100%;min-width:64px;background:var(--noir);border:1px solid var(--ligne-forte);color:var(--ecru);font:inherit;font-size:13px;padding:7px 8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--gris);text-align:left;padding:10px 12px;border-bottom:1px solid var(--ligne-forte);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--ligne);font-variant-numeric:tabular-nums;vertical-align:top}
+tr:last-child td{border-bottom:none}
+.carnet table{min-width:560px}
+.carnet td{padding:5px}
+.carnet td.ex{font-size:13px;padding-left:0;min-width:150px;font-weight:500}
+.carnet input{width:100%;min-width:66px;background:var(--noir);border:1px solid var(--ligne-forte);color:var(--ecru);font:inherit;font-size:13px;padding:7px 8px}
 .carnet input:focus{border-color:var(--rouge);outline:none}
-.carnet-aide{padding:0 22px 16px;font-size:12.5px;font-weight:300;color:var(--gris)}
 
 /* Bandeau photo */
-.bandeau{position:relative;height:260px;background-size:cover;background-repeat:no-repeat;border-bottom:1px solid var(--ligne)}
+.bandeau{position:relative;height:250px;background-size:cover;background-repeat:no-repeat;border-bottom:1px solid var(--ligne)}
 .bandeau::before{content:"";position:absolute;inset:0;background:var(--voile)}
-.bandeau .wrap{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding-block:32px}
-.bandeau h2{font-size:clamp(28px,5vw,46px);font-weight:700;text-transform:uppercase;line-height:1.05;max-width:18ch}
+.bandeau .wrap{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding-block:30px}
+.bandeau .num{font-size:clamp(54px,9vw,96px);font-weight:700;line-height:.9;color:var(--ecru);font-variant-numeric:tabular-nums}
+.bandeau .eyebrow{color:var(--ecru);opacity:.85}
 
-/* Progression */
-.regles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.regle{border:1px solid var(--ligne);padding:20px 22px;display:flex;flex-direction:column;gap:8px;background:var(--anthracite-2)}
-.regle .k{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
-.regle h3{font-size:17px;font-weight:600}
-.regle p{font-size:14px;color:var(--gris)}
-.regle p b{color:var(--ecru);font-weight:500}
+/* Progression : tableaux & flux */
+.tab{border:1px solid var(--ligne-forte);margin-top:18px;max-width:640px}
+.tab table{min-width:440px}
+.tab td:first-child{color:var(--gris)}
+.tab td.fin{color:var(--ecru);font-weight:600}
+.flux{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-top:22px}
+.flux + .flux{margin-top:10px}
+.noeud{border:1px solid var(--ligne-forte);background:var(--anthracite-2);padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0;flex:1 1 130px}
+.noeud b{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3}
+.noeud span{font-size:12.5px;color:var(--gris);line-height:1.35}
+.noeud.cle{border-color:var(--braise)}
+.noeud.cle b{color:var(--rouge)}
+.fleche{align-self:center;color:var(--gris);font-size:16px;flex:none}
+.flux-note{font-size:12.5px;font-weight:300;color:var(--gris);margin-top:8px}
 
-.exemple{margin-top:28px;border:1px solid var(--ligne-forte)}
-.exemple-head{padding:14px 20px;border-bottom:1px solid var(--ligne);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
-.exemple-head b{font-weight:600}
-.exemple table{min-width:560px}
-.exemple td.ok{color:var(--ecru);font-weight:600}
-.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--braise);color:var(--ecru);white-space:nowrap}
-.tag.go{background:var(--rouge);border-color:var(--rouge);color:var(--noir)}
-
-.rir{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
-.rir div{background:var(--noir);padding:16px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
-.rir b{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
-.rir span{font-size:13px;color:var(--gris)}
-.rir .cible{background:var(--anthracite)}
-.rir .cible b{color:var(--rouge)}
-
-.etapes{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--ligne-forte);margin-left:6px}
-.etape{position:relative;padding:0 0 28px 28px;max-width:70ch}
-.etape:last-child{padding-bottom:0}
-.etape::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;background:var(--noir);border:2px solid var(--gris)}
-.etape:first-child::before{border-color:var(--rouge)}
-.etape .k{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
-.etape h3{font-size:18px;font-weight:600;margin:2px 0 6px}
-.etape p{color:var(--gris);font-size:14.5px}
-.etape ul{margin:8px 0 0;padding-left:18px;color:var(--gris);font-size:14.5px}
-.etape li+li{margin-top:4px}
-
-.faq{display:flex;flex-direction:column;border-top:1px solid var(--ligne)}
-.faq details{border-bottom:1px solid var(--ligne)}
-.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:16px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";color:var(--gris);font-weight:400}
-.faq details[open] summary::after{content:"–"}
-.faq .rep{padding:0 0 18px;color:var(--gris);font-size:14.5px;max-width:70ch}
+.etape{display:flex;flex-direction:column;gap:10px;padding:22px 0;border-top:1px solid var(--ligne);max-width:72ch}
+.etape h4{font-size:17px;font-weight:600}
+.etape p{font-size:15px}
+.etape p.muted{font-size:14.5px}
 
 /* CTA */
-.cta{position:relative;background:url('assets/salle.jpg') center 30%/cover no-repeat;border-bottom:none}
-.cta::before{content:"";position:absolute;inset:0;background:rgba(6,6,6,.78)}
+.cta{position:relative;background:url('assets/salle.jpg') center 30%/cover no-repeat;padding-block:64px}
+.cta::before{content:"";position:absolute;inset:0;background:rgba(6,6,6,.8)}
 .cta .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
-.cta h2{font-size:clamp(26px,4vw,40px);font-weight:700;text-transform:uppercase;line-height:1.1}
-.cta p{color:var(--ecru);opacity:.85;margin-top:12px;max-width:52ch}
-.cta-box{background:var(--rouge);color:var(--noir);padding:26px 24px;display:flex;flex-direction:column;gap:6px}
+.cta h2{font-size:clamp(24px,3.6vw,36px);font-weight:700;text-transform:uppercase;line-height:1.12}
+.cta p.t{opacity:.85;margin-top:12px;max-width:52ch}
+.cta-box{background:var(--rouge);color:var(--noir);padding:24px;display:flex;flex-direction:column;gap:6px}
 .cta-box .k{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
 .cta-box .mot{font-size:44px;font-weight:700;letter-spacing:4px;line-height:1}
 .cta-box .h{font-size:14px;font-weight:500}
 
-footer{padding-block:28px;font-size:12.5px;font-weight:300;color:var(--gris)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer{padding-block:28px;font-size:12.5px;font-weight:300;color:var(--gris);border-top:1px solid var(--ligne)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
 .btn-ghost{background:none;border:1px solid var(--ligne-forte);color:var(--gris);font:inherit;font-size:12px;padding:6px 10px;cursor:pointer}
 .btn-ghost:hover{color:var(--ecru);border-color:var(--gris)}
 .btn-ghost.confirm{border-color:var(--rouge);color:var(--ecru)}
 
 @media (max-width:760px){
-  .hero-grid{grid-template-columns:1fr;padding-block:32px;gap:24px}
+  .hero-grid{grid-template-columns:1fr;padding-block:28px;gap:24px}
   .hero-photo{min-height:300px;order:-1}
-  .semaine{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .rir{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sommaire{grid-template-columns:1fr}
+  .trait{grid-template-columns:1fr;gap:4px}
+  .signes{grid-template-columns:1fr}
+  .exo{grid-template-columns:28px minmax(0,1fr);padding:14px 16px}
+  .exo .presc{grid-column:2;text-align:left;white-space:normal}
+  .seance-top,.seance-note,.carnet summary{padding-left:16px;padding-right:16px}
+  .carnet .table-scroll,.carnet-aide{padding-left:16px;padding-right:16px}
+  .fleche{transform:rotate(90deg);width:100%;text-align:center}
+  .noeud{flex-basis:100%}
   .cta .wrap{grid-template-columns:1fr}
-  section{padding-block:48px}
-  .bandeau{height:220px}
+  .partie{padding-block:48px}
+  .bandeau{height:200px}
 }
 @media (prefers-reduced-motion:no-preference){
-  .carnet input,.btn-ghost{transition:border-color .15s,color .15s}
+  .carnet input,.btn-ghost,.sommaire a{transition:border-color .15s,color .15s,background .15s}
 }
 </style>
 </head>
 <body>
 
 <!-- =====================================================================
-     ✏️  À REMPLIR POUR CHAQUE CLIENT — tout se passe dans le bloc PROGRAMME
-     plus bas (dans la balise <script>). Le reste de la page est commun
-     à tout le monde et ne se touche pas.
+     ✏️  À REMPLIR POUR CHAQUE CLIENT : uniquement le bloc PROGRAMME,
+     dans la balise <script> en bas du fichier.
+     Tout le reste (correction technique, signes de volume, "Dans la durée",
+     partie 03 "Progresser en autonomie") est commun à tous les clients.
      ===================================================================== -->
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-txt">
-      <p class="eyebrow">Programmation seule · Evan Merioua Coaching</p>
-      <h1>Ton programme<span class="client" id="h-client">[Prénom]</span></h1>
+      <p class="eyebrow">Espace client — Evan Merioua</p>
+      <h1>Bienvenue,<br><span id="h-client">[Prénom]</span></h1>
       <span class="barre"></span>
-      <p class="hero-sub" id="h-intro">Construit pour toi, à partir de ton bilan. Tout ce dont tu as besoin pour avancer en autonomie est sur cette page.</p>
-      <dl class="meta" id="h-meta"></dl>
+      <p class="hero-sub">Voici ton espace de suivi : ton analyse morphologique de départ, ton programme d'entraînement complet, et toutes les infos utiles pour bien démarrer. Garde cette page sous la main tout au long de ton suivi.</p>
+      <p class="hero-date" id="h-date"></p>
+      <nav class="sommaire" aria-label="Sommaire">
+        <a href="#analyse"><b>01</b><span>Analyse morphologique</span></a>
+        <a href="#programme"><b>02</b><span>Programme d'entraînement</span></a>
+        <a href="#autonomie"><b>03</b><span>Progresser en autonomie</span></a>
+      </nav>
     </div>
-    <div class="hero-photo" role="img" aria-label="Evan Merioua de dos, salle de sport"><span>evan.merioua</span></div>
+    <div class="hero-photo" role="img" aria-label="Evan Merioua de dos, en salle"><span>evan.merioua</span></div>
   </div>
 </header>
 
 <main>
 
-  <!-- AVANT DE COMMENCER -->
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Avant de commencer</p>
-        <h2>Comment fonctionne cette programmation</h2>
-      </div>
-      <p class="lead">Ce programme a été écrit pour toi : ton niveau, ton matériel, ton emploi du temps et ton objectif. C'est une <strong>programmation seule</strong> : il n'y a pas de suivi, pas de bilan hebdomadaire et pas d'ajustement de ma part en cours de route.</p>
-      <p class="lead">Tu as donc tout en main. En bas de la page, tu trouveras la méthode pour faire progresser tes charges, savoir quand changer quelque chose et faire évoluer le programme une fois le cycle terminé. Lis-la une fois en entier avant ta première séance.</p>
-      <div class="avertir">
-        <div><h3>Ce qui est inclus</h3><p>Ta semaine type, tes séances détaillées, un carnet pour noter tes charges et la méthode pour progresser seul.</p></div>
-        <div><h3>Ce qui n'est pas inclus</h3><p>Le suivi, les retours sur ta technique, les ajustements en cours de cycle et la nutrition personnalisée.</p></div>
-        <div><h3>Si tu as une douleur</h3><p>Une gêne articulaire n'est pas une courbature. Arrête l'exercice, remplace-le par une variante qui ne fait pas mal et consulte si ça persiste.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LÉGENDE -->
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Lire le programme</p>
-        <h2>Les abréviations de tes séances</h2>
-      </div>
-      <div class="legende">
-        <div><span>Séries × Reps</span><b>3 × 8–10</b><p>3 séries, entre 8 et 10 répétitions. La fourchette te sert à progresser.</p></div>
-        <div><span>RIR</span><b>RIR 2</b><p>Répétitions en réserve : tu t'arrêtes en sentant que tu aurais pu en faire encore 2 propres.</p></div>
-        <div><span>Repos</span><b>2'</b><p>Temps de récupération entre deux séries du même exercice. Chronomètre-le.</p></div>
-        <div><span>Tempo</span><b>3-1-1-0</b><p>Descente en 3 s, pause 1 s en bas, montée en 1 s, pas de pause en haut.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEMAINE TYPE -->
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Ta semaine type</p>
-        <h2>Organisation de la semaine</h2>
-        <p>Tu peux décaler les jours selon ton emploi du temps. Garde simplement au moins un jour de repos entre deux séances qui travaillent les mêmes muscles.</p>
-      </div>
-      <div class="semaine" id="semaine"></div>
-    </div>
-  </section>
-
-  <!-- SÉANCES -->
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Tes séances</p>
-        <h2>Le détail de chaque séance</h2>
-        <p>Ouvre le carnet sous chaque séance pour noter ta charge et tes répétitions semaine après semaine. Il reste enregistré sur ton téléphone ou ton ordinateur.</p>
-      </div>
-      <div class="seances" id="seances"></div>
-    </div>
-  </section>
-
-  <!-- BANDEAU -->
-  <div class="bandeau" style="background-image:url('assets/barre.jpg');background-position:center 60%">
-    <div class="wrap">
-      <p class="eyebrow">Ton autonomie</p>
-      <h2>Comment progresser sans moi</h2>
-    </div>
+  <!-- ===================== 01 ANALYSE ===================== -->
+  <div class="bandeau" style="background-image:url('assets/halteres.jpg');background-position:center 40%">
+    <div class="wrap"><span class="num">01</span><p class="eyebrow">Analyse morpho-anatomique</p></div>
   </div>
-
-  <!-- PROGRESSION -->
-  <section>
+  <section class="partie" id="analyse">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Méthode</p>
-        <h2>La double progression</h2>
-        <p>C'est la règle à appliquer sur tous tes exercices. Elle est simple, elle marche, et elle t'évite de deviner quand monter la charge.</p>
+      <div class="partie-head">
+        <h2>Ton point de départ</h2>
+        <p>Cette analyse identifie tes caractéristiques structurelles à partir de tes photos de bilan — c'est elle qui explique les choix d'exercices, d'angles et d'amplitudes de ton programme.</p>
+      </div>
+      <div id="analyse-zones"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 02 PROGRAMME ===================== -->
+  <div class="bandeau" style="background-image:url('assets/barre.jpg');background-position:center 60%">
+    <div class="wrap"><span class="num">02</span><p class="eyebrow">Programme d'entraînement</p></div>
+  </div>
+  <section class="partie" id="programme">
+    <div class="wrap">
+      <div class="partie-head">
+        <h2>Ta programmation actuelle</h2>
+        <p id="p-choix"></p>
       </div>
 
-      <div class="regles">
-        <div class="regle"><p class="k">Étape 1</p><h3>Choisis ta charge</h3><p>Prends une charge qui te permet de faire <b>le bas de la fourchette</b> sur toutes les séries, au RIR demandé.</p></div>
-        <div class="regle"><p class="k">Étape 2</p><h3>Ajoute des répétitions</h3><p>Garde la même charge et essaie de faire <b>une répétition de plus</b> par série d'une semaine à l'autre.</p></div>
-        <div class="regle"><p class="k">Étape 3</p><h3>Monte la charge</h3><p>Quand tu atteins <b>le haut de la fourchette sur toutes les séries</b>, augmente la charge et repars du bas de la fourchette.</p></div>
+      <div class="encadre alerte">
+        <p class="k">Correction technique</p>
+        <p>Tu peux m'envoyer jusqu'à 2 vidéos par exercice pour que je valide ta technique — n'hésite surtout pas.</p>
+        <p>Le fonctionnement : tu m'envoies une vidéo sur WhatsApp (ex. ton squat), je te corrige, tu me la renvoies en appliquant les corrections, et je la valide — avec parfois quelques derniers ajustements. Tu peux faire ça pour tous les exercices du programme.</p>
+        <p>La technique est un facteur tout aussi important que le programme lui-même : je ne veux pas te laisser livré à toi-même dessus.</p>
       </div>
 
-      <div class="exemple">
-        <div class="exemple-head"><b>Exemple : développé couché, 3 × 8–10 à RIR 2</b><span class="muted">Combien ajouter : +1 à 2,5 kg sur le haut du corps, +2,5 à 5 kg sur le bas du corps.</span></div>
-        <div class="table-scroll">
+      <div class="sous"><h3>Structure</h3></div>
+      <div class="texte" id="p-structure"></div>
+      <div class="signes" style="margin-top:20px">
+        <div class="signe moins"><p class="k">Signe qu'il faut retirer une série</p><p>Performances en baisse sur un exo ciblé ou de manière globale durant plus de 3 semaines</p></div>
+        <div class="signe plus"><p class="k">Signe qu'il faut augmenter d'une série</p><p>Surcharge progressive nickel + sensation de « je peux en faire plus » à la fin de la séance + congestion et ressenti incroyable</p></div>
+      </div>
+      <div class="texte" id="p-focus" style="margin-top:20px"></div>
+
+      <div class="sous"><h3>Tes séances</h3></div>
+      <div class="seances" id="seances"></div>
+
+      <div class="sous"><h3>Dans la durée</h3></div>
+      <div class="texte">
+        <p>Ce programme a des chances de te tenir pendant 6 mois, 10 mois, 1 an ou plus : la musculation est un sport de patience. Le plus important est de progresser chaque semaine sur les mêmes exercices, avec la même technique, chaque semaine. Ta programmation ne devra changer que lorsque ton physique et ton efficacité à l'entraînement auront réellement changé — pas par simple envie de changement.</p>
+      </div>
+
+      <div class="sous"><h3>Évolutions à venir</h3></div>
+      <div class="texte" id="p-evolutions"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 03 AUTONOMIE (commun à tous) ===================== -->
+  <div class="bandeau" style="background-image:url('assets/salle.jpg');background-position:center 35%">
+    <div class="wrap"><span class="num">03</span><p class="eyebrow">Progresser en autonomie</p></div>
+  </div>
+  <section class="partie" id="autonomie">
+    <div class="wrap">
+      <div class="partie-head">
+        <h2>Faire évoluer ton programme seul(e)</h2>
+        <p>Cette formule ne comprend pas de suivi en ligne au quotidien : pas de bilans hebdomadaires, pas d'échange continu — en dehors de la validation technique de tes exercices en vidéo (voir plus haut). C'est donc à toi d'ajuster ton entraînement dans le temps : voici les deux leviers à connaître pour le faire intelligemment.</p>
+      </div>
+
+      <!-- Surcharge progressive -->
+      <div class="sous"><h3>La surcharge progressive</h3></div>
+      <div class="texte">
+        <p>Une fois ta charge choisie sur un exercice, tu la fais progresser de façon précise, série par série — plutôt que de foncer à l'échec dès la première semaine, tu restes bien plus longtemps en technique parfaite tout en progressant chaque semaine.</p>
+      </div>
+
+      <div class="etape" style="margin-top:12px">
+        <h4>Choisir sa charge de départ</h4>
+        <p>Au démarrage d'un cycle sur un exercice, choisis une charge que tu es quasiment certain(e) de pouvoir tenir sur 3 séries de 12 répétitions (le haut de la fourchette 8-12), avec la même charge sur les 3 séries. Ça donne de l'élan à la progression et évite de partir avec une technique déjà dégradée.</p>
+      </div>
+      <div class="etape">
+        <h4>Augmenter le poids</h4>
+        <p>Une fois les 3 × 12 acquis proprement, augmente la charge de 1,25 kg à 2,5 kg seulement — un petit palier, pour ne pas dégrader la technique. Ce petit ajout te fait mécaniquement redescendre à 8 répétitions sur les 3 séries à cette nouvelle charge.</p>
+        <div class="encadre">
+          <p class="k">Ce qui se passe alors</p>
+          <p>À charge égale, 8 répétitions ne demandent pas le même effort sur les 3 séries à cause de la fatigue qui s'accumule : série 1 ≈ 2 répétitions de réserve, série 2 ≈ 1 répétition de réserve, série 3 = la plus intense, quasiment à l'échec.</p>
+        </div>
+      </div>
+      <div class="etape">
+        <h4>Remonter les répétitions, série par série</h4>
+        <p>Chaque semaine, tu ajoutes seulement 1 répétition, sur une seule série à la fois — en commençant par la dernière (la plus intense), puis la deuxième. Les séries précédentes gardent ainsi du « mou », ce qui préserve une technique et des ressentis impeccables tout en faisant progresser le tonnage.</p>
+        <div class="tab table-scroll">
           <table>
-            <thead><tr><th>Semaine</th><th>Charge</th><th>Série 1</th><th>Série 2</th><th>Série 3</th><th>Décision</th></tr></thead>
+            <thead><tr><th>Semaine</th><th>Série 1</th><th>Série 2</th><th>Série 3</th></tr></thead>
             <tbody>
-              <tr><td>S1</td><td>60 kg</td><td>9</td><td>8</td><td>8</td><td><span class="tag">On garde</span></td></tr>
-              <tr><td>S2</td><td>60 kg</td><td>10</td><td>9</td><td>8</td><td><span class="tag">On garde</span></td></tr>
-              <tr><td>S3</td><td>60 kg</td><td class="ok">10</td><td class="ok">10</td><td class="ok">10</td><td><span class="tag go">+2,5 kg</span></td></tr>
-              <tr><td>S4</td><td>62,5 kg</td><td>8</td><td>8</td><td>8</td><td><span class="tag">On garde</span></td></tr>
+              <tr><td>Après l'augmentation de charge</td><td>8</td><td>8</td><td>8</td></tr>
+              <tr><td>Semaine suivante</td><td>8</td><td>8</td><td class="fin">9</td></tr>
+              <tr><td>Semaine d'après</td><td>8</td><td class="fin">9</td><td>9</td></tr>
+              <tr><td>… et ainsi de suite</td><td colspan="3" class="fin">jusqu'à revenir à 12 / 12 / 12</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- RIR -->
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Intensité</p>
-        <h2>Bien régler ton RIR</h2>
-        <p>Le RIR, c'est ce qui rend la progression fiable. Si tu t'arrêtes trop loin de l'échec, tu ne progresses pas. Si tu vas à l'échec à chaque série, tu récupères mal. Sois honnête avec toi-même.</p>
+      <div class="flux" aria-label="Cycle de surcharge progressive">
+        <div class="noeud"><b>Charge de départ</b><span>quasi sûr(e) de faire 3×12</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>3 × 12</b><span>technique propre</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud cle"><b>+ 1,25 à 2,5 kg</b></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>3 × 8</b><span>retour au bas de la fourchette</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>+1 rep/semaine</b><span>une série à la fois</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>3 × 12</b><span>et on recommence</span></div>
       </div>
-      <div class="rir">
-        <div><b>4+</b><span>Facile. Tu pourrais en faire beaucoup plus.</span></div>
-        <div><b>3</b><span>Effort net, vitesse encore bonne.</span></div>
-        <div class="cible"><b>2</b><span>La barre ralentit. Zone cible la plupart du temps.</span></div>
-        <div class="cible"><b>1</b><span>Une dernière répétition possible, pas plus.</span></div>
-        <div><b>0</b><span>Échec. Plus aucune répétition propre possible.</span></div>
+      <div class="texte" style="margin-top:22px">
+        <p>Ce cycle se répète à l'infini : à chaque retour à 3 × 12, nouvelle augmentation de charge, nouveau passage à 3 × 8, et nouvelle remontée progressive. C'est ce qui permet d'accumuler un tonnage et une tension mécanique toujours plus élevés, avec une technique d'exécution nickel du début à la fin.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- FAIRE ÉVOLUER -->
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Après le cycle</p>
-        <h2>Faire évoluer ton programme</h2>
-        <p>Un programme ne se change pas toutes les semaines. Tu le gardes tant que tu progresses, puis tu le fais évoluer petit à petit, dans cet ordre.</p>
+      <!-- Volume -->
+      <div class="sous"><h3>La gestion du volume (périodisation)</h3></div>
+      <div class="etape" style="border-top:none;padding-top:0">
+        <h4>Le principe de base</h4>
+        <p>Tu démarres sur une base de 3 séries de 8 à 12 répétitions par exercice. Tu restes sur ce format jusqu'à ressentir, en fin de séance, que tu pourrais « en faire plus » — cela peut prendre plusieurs mois, parfois 1 à 2 ans selon les personnes. C'est le signal pour passer à 4 séries.</p>
       </div>
-      <div class="etapes">
-        <div class="etape">
-          <p class="k">Tant que ça avance</p>
-          <h3>Ne change rien</h3>
-          <p>Si tes charges ou tes répétitions montent sur la majorité des exercices, garde exactement le même programme. La nouveauté n'est pas un critère.</p>
+      <div class="etape">
+        <h4>Passer à une série de plus — la méthode du lissage</h4>
+        <p>Quand tu ajoutes une série, reprends le même poids que sur ta dernière série, même si elle était allée jusqu'à l'échec. Ta nouvelle série aura logiquement moins de répétitions — ce n'est pas un problème, c'est normal.</p>
+        <p>Pour savoir combien de répétitions viser à la séance suivante : additionne les répétitions de tes 4 séries, puis divise le total par 4.</p>
+        <div class="tab table-scroll">
+          <table>
+            <thead><tr><th>Série 1</th><th>Série 2</th><th>Série 3</th><th>Série 4</th><th>Total ÷ 4</th></tr></thead>
+            <tbody><tr><td style="color:var(--ecru)">12</td><td>12</td><td>12</td><td>8</td><td class="fin">= 11 reps visées</td></tr></tbody>
+          </table>
         </div>
-        <div class="etape">
-          <p class="k">Quand un exercice bloque</p>
-          <h3>Diagnostique avant de changer</h3>
-          <p>Un exercice est bloqué quand il ne progresse plus sur <b>3 séances d'affilée</b>. Vérifie d'abord dans l'ordre :</p>
-          <ul>
-            <li>ton sommeil et ton alimentation de la semaine ;</li>
-            <li>tes temps de repos, souvent raccourcis sans s'en rendre compte ;</li>
-            <li>ton RIR, peut-être trop prudent ou au contraire toujours à l'échec.</li>
-          </ul>
-        </div>
-        <div class="etape">
-          <p class="k">Toutes les 6 à 8 semaines</p>
-          <h3>Fais une semaine allégée</h3>
-          <p>Si la fatigue s'accumule ou que plusieurs exercices stagnent en même temps, fais une semaine avec les mêmes séances mais <b>une série de moins par exercice</b> et un RIR de 3 à 4. Tu repars ensuite plus frais.</p>
-        </div>
-        <div class="etape">
-          <p class="k">Si ça bloque toujours</p>
-          <h3>Change un seul élément à la fois</h3>
-          <ul>
-            <li>Remplace l'exercice bloqué par une variante proche (barre → haltères, guidée → libre, changement d'inclinaison).</li>
-            <li>Ou change la fourchette de répétitions (par exemple 8–10 → 6–8 ou 10–12).</li>
-            <li>Ou ajoute une série sur le muscle que tu veux prioriser, sans en ajouter partout.</li>
-          </ul>
-        </div>
-        <div class="etape">
-          <p class="k">Fin du cycle</p>
-          <h3>Repars sur un nouveau cycle</h3>
-          <p>À la fin de la durée prévue, garde la même structure de semaine, remplace 1 à 2 exercices par séance et repars sur des charges un peu plus basses pour reconstruire une nouvelle progression.</p>
+        <div class="encadre alerte">
+          <p class="k">Signal d'alerte</p>
+          <p>Si une série descend sous les 8 répétitions, c'est le signe que tu as probablement une série de trop pour le moment.</p>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="etape">
+        <h4>Le retour en arrière (deload)</h4>
+        <p>Après 2 à 5 ans de pratique, des paliers de régression deviennent nécessaires — c'est normal, ça fait partie du processus. Le signal : un jour, malgré de bonnes conditions et une bonne sensation musculaire, ta dernière série — qui progressait normalement — chute fortement. C'est le moment de revenir en arrière : réduire le volume, redescendre vers 2 séries de 8-12, puis relancer le cycle de progression depuis le début.</p>
+      </div>
 
-  <!-- BANDEAU 2 -->
-  <div class="bandeau" style="background-image:url('assets/halteres.jpg');background-position:center 40%">
-    <div class="wrap">
-      <p class="eyebrow">Au quotidien</p>
-      <h2>Les questions qu'on me pose le plus</h2>
-    </div>
-  </div>
+      <!-- Top set -->
+      <div class="sous"><h3>Format avancé : Top Set / Back Off</h3></div>
+      <div class="texte">
+        <p>Une fois le format classique maîtrisé, tu peux passer sur un format Top Set / Back Off : une première série plus lourde (Top Set), suivie d'une ou plusieurs séries plus légères pour maintenir du volume (Back Off). Quand ton unique Back Off commence à te sembler « léger », c'est le signe d'en ajouter un second — ce 3ᵉ Back Off sera lui-même amené à disparaître plus tard, une fois que tu seras devenu(e) assez fort(e) pour n'avoir besoin que d'un seul Top Set.</p>
+      </div>
+      <div class="flux">
+        <div class="noeud"><b>3 × 8-12</b></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>4 × 8-12</b><span>gros exercices, pour maximiser la charge</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>3 × 6-10</b></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>4 × 6-10</b><span>pour augmenter le temps sous tension</span></div>
+      </div>
+      <div class="flux">
+        <div class="noeud"><b>3 × 6-10</b></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>Top Set 8-12</b><span>Back Off 10-15</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>Top Set</b><span>+ 2 Back Off</span></div>
+      </div>
+      <div class="flux">
+        <div class="noeud"><b>Top Set 6-10</b><span>BO 8-12</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud"><b>Top Set 6-10</b><span>BO 6-10</span></div><span class="fleche" aria-hidden="true">→</span>
+        <div class="noeud cle"><b>Top Set 6-10</b><span>seul, une fois assez fort(e)</span></div>
+      </div>
 
-  <!-- FAQ -->
-  <section>
-    <div class="wrap">
-      <div class="faq">
-        <details><summary>Comment je m'échauffe ?</summary><div class="rep">5 minutes de cardio léger, puis sur le premier exercice de chaque groupe musculaire : 2 à 3 séries de montée en charge (environ 50 %, 70 % puis 85 % de ta charge de travail) avec peu de répétitions. Les séries d'échauffement ne comptent pas dans les séries du programme.</div></details>
-        <details><summary>J'ai raté une séance, je fais quoi ?</summary><div class="rep">Tu reprends simplement à la séance suivante dans l'ordre, sans essayer de rattraper en doublant. Si tu rates une semaine entière, reprends avec des charges un peu plus basses la première séance.</div></details>
-        <details><summary>Une machine est prise ou je n'ai pas le matériel.</summary><div class="rep">Remplace par un exercice qui travaille le même muscle dans le même type de mouvement (une presse par un squat guidé, un tirage poulie par un rowing haltère). Note le changement dans ton carnet pour comparer ce qui est comparable.</div></details>
-        <details><summary>Je peux ajouter des exercices ?</summary><div class="rep">Le volume est calculé pour que tu récupères. Ajouter des exercices, c'est souvent progresser moins. Si tu veux insister sur un muscle, ajoute au maximum une série sur un exercice qui le cible déjà.</div></details>
-        <details><summary>Et le cardio ?</summary><div class="rep">Il est compatible. Évite simplement le cardio intense juste avant une séance de jambes. Marcher tous les jours aide à récupérer et ne gêne pas ta progression.</div></details>
-        <details><summary>Qu'est-ce qui compte en dehors de la salle ?</summary><div class="rep">Le sommeil (7 à 9 h), assez de protéines chaque jour et la régularité. Un programme moyen suivi pendant des mois bat toujours un programme parfait suivi trois semaines.</div></details>
+      <!-- Par exercice -->
+      <div class="sous"><h3>Quand augmenter le volume, exercice par exercice</h3></div>
+      <div class="texte">
+        <p>Augmente toujours sur ton premier exercice d'un groupe musculaire en premier. Si cette augmentation impacte négativement ton deuxième exercice du même groupe (moins de forme, moins de reps), c'est que c'était trop tôt : attends, ou augmente plutôt sur ce deuxième exercice à la place.</p>
+        <p>Pour un point faible (une zone en retard), la logique change : au lieu de suivre la progression classique en séries, privilégie une progression vers des répétitions plus hautes (par exemple 8-12 → 15-20 puis 10-15) pour apporter plus de volume sur cette zone spécifique.</p>
       </div>
     </div>
   </section>
@@ -408,8 +388,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="wrap">
       <div>
         <p class="eyebrow">Aller plus loin</p>
-        <h2>Tu veux un suivi pour ta prochaine étape ?</h2>
-        <p>Avec le coaching suivi, j'ajuste ton programme en continu, je corrige ta technique et on fait le point régulièrement ensemble.</p>
+        <h2>Envie d'un suivi complet pour la suite ?</h2>
+        <p class="t">Bilans réguliers, ajustements du programme et échanges en continu.</p>
       </div>
       <div class="cta-box">
         <p class="k">Envoie-moi en DM</p>
@@ -423,7 +403,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <footer>
   <div class="wrap">
-    <span id="f-date">Evan Merioua Coaching</span>
+    <span>Evan Merioua Coaching</span>
     <button type="button" class="btn-ghost" id="reset">Effacer mon carnet</button>
   </div>
 </footer>
@@ -432,137 +412,147 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 /* =====================================================================
    ✏️  PROGRAMME DU CLIENT — la seule partie à modifier
    ---------------------------------------------------------------------
-   - Laisse un champ vide ("") et il s'affichera comme "à compléter".
-   - Ajoute ou retire des séances / exercices en copiant un bloc { ... }.
-   - "semaine" : 7 cases du lundi au dimanche. Mets la lettre d'une séance
-     ("A", "B"...) ou "" pour un jour de repos.
+   - Un champ vide ("") s'affiche en gris "à compléter".
+   - Pour ajouter un point, un exercice ou une séance : copie un bloc { ... }
+     et colle-le juste après (virgule entre deux blocs).
+   - Pour mettre un mot en gras dans un texte : <b>mot</b>
    ===================================================================== */
 const PROGRAMME = {
-  client:     "",            // ex. "Mathis"
-  objectif:   "",            // ex. "Prise de masse"
-  duree:      "",            // ex. "8 semaines"
-  frequence:  "",            // ex. "4 séances / semaine"
-  niveau:     "",            // ex. "Intermédiaire"
-  debut:      "",            // ex. "14 octobre 2026"
-  intro:      "",            // phrase d'intro perso (facultatif)
-  semainesCarnet: 8,         // nombre de colonnes dans le carnet de charges
+  client:      "",          // ex. "Mathis"
+  dateBilan:   "",          // ex. "14/10/2026"
+  validiteDu:  "",          // ex. "14/10"
+  validiteAu:  "",          // ex. "14/04"
 
-  semaine: ["A", "B", "", "C", "D", "", ""],
+  /* ---------- 01 ANALYSE MORPHO-ANATOMIQUE ---------- */
+  analyse: [
+    { zone: "Bas du corps",
+      points: [
+        { trait: "", effet: "" },
+        { trait: "", effet: "" }
+      ],
+      encadres: [
+        { titre: "Point d'attention long terme", texte: "", alerte: true },
+        { titre: "Limite de l'analyse", texte: "" }
+      ] },
+    { zone: "Haut du corps",
+      points: [
+        { trait: "", effet: "" },
+        { trait: "", effet: "" },
+        { trait: "", effet: "" }
+      ],
+      encadres: [] },
+    { zone: "Dos",
+      points: [
+        { trait: "", effet: "" },
+        { trait: "", effet: "" },
+        { trait: "", effet: "" }
+      ],
+      encadres: [] }
+  ],
+
+  /* ---------- 02 PROGRAMME ---------- */
+  choixSplit: "",            // pourquoi ce split (ex. "On repasse sur un Upper/Lower classique car…")
+  structure:  [""],          // paragraphe(s) "Premier bloc : …"
+  focus:      [""],          // paragraphe(s) sur le focus du programme
 
   seances: [
-    { id: "A", nom: "", focus: "", echauffement: "",
+    { lettre: "A", nom: "", note: "",
       exercices: [
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" }
       ] },
-    { id: "B", nom: "", focus: "", echauffement: "",
+    { lettre: "B", nom: "", note: "",
       exercices: [
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
-      ] },
-    { id: "C", nom: "", focus: "", echauffement: "",
-      exercices: [
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
-      ] },
-    { id: "D", nom: "", focus: "", echauffement: "",
-      exercices: [
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
-        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" },
+        { nom: "", series: "3", reps: "", repos: "" }
       ] }
-  ]
+  ],
+
+  evolutions: ["", ""],      // paragraphe(s) "Évolutions à venir"
+
+  semainesCarnet: 8          // nombre de colonnes dans le carnet de charges
 };
 /* ===================== fin de la partie à modifier ===================== */
 
 (function () {
   const P = PROGRAMME;
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const val = (v, ph) => v ? esc(v) : `<span class="vide">${ph || "à compléter"}</span>`;
   const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // texte riche autorisé (<b>) : on garde uniquement b/strong/em/br
+  const riche = s => esc(s).replace(/&lt;(\/?)(b|strong|em|br)&gt;/g, "<$1$2>");
+  const ou = (v, ph) => v ? riche(v) : `<span class="vide">${ph}</span>`;
+  const paras = (arr, ph) => (arr && arr.length ? arr : [""]).map(t => `<p>${ou(t, ph)}</p>`).join("");
 
   // En-tête
-  if (P.client) { $("h-client").textContent = P.client; document.title = "Programme " + P.client + " · Evan Merioua"; }
-  else $("h-client").innerHTML = '<span class="vide" style="font-style:normal">[Prénom]</span>';
-  if (P.intro) $("h-intro").textContent = P.intro;
-  $("h-meta").innerHTML = [["Objectif", P.objectif], ["Durée", P.duree], ["Fréquence", P.frequence], ["Niveau", P.niveau], ["Début", P.debut]]
-    .map(([k, v]) => `<div><dt>${k}</dt><dd>${val(v, "—")}</dd></div>`).join("");
-  if (P.debut) $("f-date").textContent = "Evan Merioua Coaching · Programme remis le " + P.debut;
+  if (P.client) { $("h-client").textContent = P.client; document.title = "Espace client " + P.client + " · Evan Merioua"; }
+  $("h-date").innerHTML = `Bilan réalisé le ${P.dateBilan ? esc(P.dateBilan) : "[jj/mm/aaaa]"} · Programme valable du ${P.validiteDu ? esc(P.validiteDu) : "[jj/mm]"} au ${P.validiteAu ? esc(P.validiteAu) : "[jj/mm]"}`;
 
-  // Semaine
-  const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-  const parId = Object.fromEntries(P.seances.map(s => [s.id, s]));
-  $("semaine").innerHTML = jours.map((j, i) => {
-    const id = P.semaine[i];
-    if (!id) return `<div class="jour repos"><span class="j">${j}</span><span class="s">Repos</span></div>`;
-    const s = parId[id];
-    return `<div class="jour on"><span class="j">${j}</span><span class="s">Séance ${esc(id)}${s && s.nom ? "<br>" + esc(s.nom) : ""}</span></div>`;
-  }).join("");
+  // 01 Analyse
+  $("analyse-zones").innerHTML = P.analyse.map(z => `
+    <div class="sous"><h3>${esc(z.zone)}</h3></div>
+    <div class="traits">${z.points.map(p => `<div class="trait"><h4>${ou(p.trait, "Caractéristique")}</h4><p>${ou(p.effet, "Ce que ça implique pour ton entraînement")}</p></div>`).join("")}</div>
+    ${(z.encadres || []).map(e => `<div class="encadre${e.alerte ? " alerte" : ""}"><p class="k">${esc(e.titre)}</p><p>${ou(e.texte, "à compléter")}</p></div>`).join("")}
+  `).join("");
 
-  // Carnet (stocké dans le navigateur du client)
+  // 02 Programme
+  $("p-choix").innerHTML = ou(P.choixSplit, "Pourquoi ce split : à compléter");
+  $("p-structure").innerHTML = paras(P.structure, "Premier bloc : à compléter");
+  $("p-focus").innerHTML = paras(P.focus, "Focus du programme : à compléter");
+  $("p-evolutions").innerHTML = paras(P.evolutions, "à compléter");
+
+  // Carnet (enregistré dans le navigateur du client)
   const cle = "carnet:" + (P.client || "modele");
   let carnet = {};
-  try { carnet = JSON.parse(localStorage.getItem(cle) || "{}"); } catch (e) { carnet = {}; }
+  try { carnet = JSON.parse(localStorage.getItem(cle) || "{}") || {}; } catch (e) { carnet = {}; }
   const sauver = () => { try { localStorage.setItem(cle, JSON.stringify(carnet)); } catch (e) {} };
   const nbSem = Math.max(1, P.semainesCarnet || 8);
 
-  // Séances
   $("seances").innerHTML = P.seances.map(s => {
-    const lignes = s.exercices.map((e, i) => `<tr>
-        <td class="n">${i + 1}</td><td class="ex">${val(e.nom, "Exercice")}</td>
-        <td>${val(e.series, "–")}</td><td>${val(e.reps, "–")}</td><td>${val(e.rir, "–")}</td>
-        <td>${val(e.repos, "–")}</td><td>${val(e.tempo, "–")}</td><td class="note">${e.note ? esc(e.note) : ""}</td></tr>`).join("");
+    const exos = s.exercices.map(e => {
+      const presc = e.reps
+        ? `${esc(e.series || "3")} × ${esc(e.reps)}${e.repos ? ` <span class="r">/ repos ${esc(e.repos)}</span>` : ""}`
+        : `<span class="vide">${esc(e.series || "3")} × … / repos …</span>`;
+      return `<li class="exo"><span class="nom">${ou(e.nom, "Exercice")}</span><span class="presc">${presc}</span></li>`;
+    }).join("");
     const head = Array.from({ length: nbSem }, (_, k) => `<th>S${k + 1}</th>`).join("");
-    const carnetLignes = s.exercices.map((e, i) => `<tr><td class="ex">${val(e.nom, "Exercice " + (i + 1))}</td>` +
+    const lignes = s.exercices.map((e, i) => `<tr><td class="ex">${ou(e.nom, "Exercice " + (i + 1))}</td>` +
       Array.from({ length: nbSem }, (_, k) => {
-        const id = `c-${s.id}-${i}-${k}`;
-        return `<td><input id="${id}" data-k="${id}" inputmode="text" placeholder="kg × reps" aria-label="Séance ${esc(s.id)}, exercice ${i + 1}, semaine ${k + 1}" value="${esc(carnet[id] || "")}"></td>`;
+        const id = `c-${s.lettre}-${i}-${k}`;
+        return `<td><input id="${id}" data-k="${id}" placeholder="kg · reps" aria-label="Séance ${esc(s.lettre)}, exercice ${i + 1}, semaine ${k + 1}" value="${esc(carnet[id] || "")}"></td>`;
       }).join("") + `</tr>`).join("");
     return `<article class="seance">
-      <div class="seance-top">
-        <h3><em>${esc(s.id)}</em>${s.nom ? esc(s.nom) : '<span class="vide">Nom de la séance</span>'}</h3>
-        <p>${s.focus ? esc(s.focus) : '<span class="vide">Focus de la séance</span>'}</p>
-      </div>
-      ${s.echauffement ? `<p class="echauf"><b>Échauffement :</b> ${esc(s.echauffement)}</p>` : ""}
-      <div class="table-scroll"><table>
-        <thead><tr><th>#</th><th>Exercice</th><th>Séries</th><th>Reps</th><th>RIR</th><th>Repos</th><th>Tempo</th><th>Notes</th></tr></thead>
-        <tbody>${lignes}</tbody>
-      </table></div>
+      <div class="seance-top"><span class="k">Séance ${esc(s.lettre)}</span><h3>${ou(s.nom, "Nom de la séance")}</h3></div>
+      <ol class="exos">${exos}</ol>
+      ${s.note ? `<p class="seance-note">${riche(s.note)}</p>` : ""}
       <details class="carnet"><summary>Mon carnet de charges</summary>
-        <p class="carnet-aide">Note par exemple « 60 × 10/9/8 » : la charge puis les répétitions de chaque série.</p>
-        <div class="table-scroll"><table><thead><tr><th>Exercice</th>${head}</tr></thead><tbody>${carnetLignes}</tbody></table></div>
+        <p class="carnet-aide">Note ta charge et tes reps de chaque série, par ex. « 22,5 · 12/11/10 ». C'est enregistré sur ton appareil.</p>
+        <div class="table-scroll"><table><thead><tr><th>Exercice</th>${head}</tr></thead><tbody>${lignes}</tbody></table></div>
       </details>
     </article>`;
   }).join("");
 
   document.addEventListener("input", ev => {
     const k = ev.target.dataset && ev.target.dataset.k;
-    if (!k) return;
-    carnet[k] = ev.target.value; sauver();
+    if (k) { carnet[k] = ev.target.value; sauver(); }
   });
 
-  // Effacer le carnet, avec confirmation dans la page
+  // Effacer le carnet, confirmation dans la page
   const btn = $("reset"); let arme = false, t;
   btn.addEventListener("click", () => {
-    if (!arme) { arme = true; btn.textContent = "Confirmer l'effacement ?"; btn.classList.add("confirm");
-      t = setTimeout(() => { arme = false; btn.textContent = "Effacer mon carnet"; btn.classList.remove("confirm"); }, 4000); return; }
+    if (!arme) {
+      arme = true; btn.textContent = "Confirmer l'effacement ?"; btn.classList.add("confirm");
+      t = setTimeout(() => { arme = false; btn.textContent = "Effacer mon carnet"; btn.classList.remove("confirm"); }, 4000);
+      return;
+    }
     clearTimeout(t); carnet = {}; sauver();
-    document.querySelectorAll(".carnet input").forEach(i => i.value = "");
+    document.querySelectorAll(".carnet input").forEach(i => { i.value = ""; });
     arme = false; btn.textContent = "Carnet effacé"; btn.classList.remove("confirm");
   });
 })();
