@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Programmation Evan Merioua</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Mise en page : colonne unique sombre façon salle, photos réelles en bandeaux, un seul rouge par bloc. */
+:root{
+  --noir:#0A0A0A;
+  --anthracite:#1E1C1B;
+  --anthracite-2:#141312;
+  --rouge:#C41E1E;
+  --braise:#7A1414;
+  --ecru:#F2EDE2;
+  --gris:#93897A;
+  --ligne:rgba(242,237,226,0.10);
+  --ligne-forte:rgba(242,237,226,0.18);
+  --voile:rgba(6,6,6,0.55);
+  --font:'Poppins','DejaVu Sans',system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--noir);color:var(--ecru);font-family:var(--font);
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+img{max-width:100%}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--rouge)}
+.muted{color:var(--gris)}
+.barre{display:block;width:56px;height:5px;background:var(--rouge)}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:2px}
+
+/* ---------- HERO ---------- */
+.hero{border-bottom:1px solid var(--ligne)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:stretch;padding-block:56px}
+.hero-txt{display:flex;flex-direction:column;gap:18px;justify-content:center;min-width:0}
+.hero h1{font-size:clamp(38px,7vw,68px);font-weight:700;line-height:1.02;text-transform:uppercase;letter-spacing:.5px}
+.hero h1 .client{display:block;color:var(--ecru)}
+.hero-sub{font-size:16px;color:var(--gris);max-width:46ch}
+.hero-photo{position:relative;min-height:380px;background:url('assets/dos.jpg') center 30%/cover no-repeat;border:1px solid var(--ligne)}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.75),rgba(6,6,6,.15) 55%)}
+.hero-photo span{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;font-weight:300;letter-spacing:1px;color:var(--ecru)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:8px}
+.meta div{background:var(--noir);padding:12px 14px;min-width:0}
+.meta dt{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
+.meta dd{margin:2px 0 0;font-weight:600;font-size:15px;overflow-wrap:anywhere}
+
+/* ---------- SECTIONS ---------- */
+section{padding-block:64px;border-bottom:1px solid var(--ligne)}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;max-width:68ch}
+.sec-head h2{font-size:clamp(24px,3.6vw,32px);font-weight:700}
+.sec-head p{color:var(--gris)}
+.lead{font-size:16px;max-width:66ch}
+.lead + .lead{margin-top:14px}
+.lead strong{font-weight:600}
+
+.avertir{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+.avertir div{background:var(--anthracite-2);border:1px solid var(--ligne);padding:18px 20px}
+.avertir h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.avertir p{font-size:14px;color:var(--gris)}
+
+/* Légende */
+.legende{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+.legende div{background:var(--noir);padding:18px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.legende b{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.legende span{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris);font-weight:600}
+.legende p{font-size:14px;color:var(--gris)}
+
+/* Semaine */
+.semaine{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.jour{border:1px solid var(--ligne);padding:14px 10px;min-height:96px;display:flex;flex-direction:column;gap:6px;background:var(--anthracite-2)}
+.jour .j{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
+.jour .s{font-weight:600;font-size:14px;line-height:1.3;overflow-wrap:anywhere}
+.jour.repos{background:transparent}
+.jour.repos .s{color:var(--gris);font-weight:400}
+.jour.on{border-color:var(--braise)}
+.jour.on .j{color:var(--rouge)}
+
+/* Séances */
+.seances{display:flex;flex-direction:column;gap:28px}
+.seance{background:var(--anthracite-2);border:1px solid var(--ligne)}
+.seance-top{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--ligne)}
+.seance-top h3{font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.seance-top h3 em{font-style:normal;color:var(--rouge);margin-right:10px}
+.seance-top p{font-size:14px;color:var(--gris)}
+.echauf{padding:12px 22px;font-size:13.5px;color:var(--gris);border-bottom:1px solid var(--ligne)}
+.echauf b{color:var(--ecru);font-weight:600}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+th{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--gris);text-align:left;padding:10px 12px;border-bottom:1px solid var(--ligne-forte);white-space:nowrap}
+td{padding:12px;border-bottom:1px solid var(--ligne);vertical-align:top;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+td.n{color:var(--gris);width:34px;font-weight:300}
+td.ex{font-weight:600;min-width:170px}
+td.note{color:var(--gris);font-size:13px;min-width:160px}
+.vide{color:rgba(147,137,122,.45);font-weight:400;font-style:italic}
+.carnet{border-top:1px solid var(--ligne)}
+.carnet summary{cursor:pointer;padding:14px 22px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ecru);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.carnet summary::-webkit-details-marker{display:none}
+.carnet summary::after{content:"+";color:var(--rouge);font-weight:700}
+.carnet[open] summary::after{content:"–"}
+.carnet .table-scroll{padding:0 22px 18px}
+.carnet table{min-width:520px}
+.carnet td{padding:6px}
+.carnet td.ex{font-size:13px;padding-left:0}
+.carnet input{width:100%;min-width:64px;background:var(--noir);border:1px solid var(--ligne-forte);color:var(--ecru);font:inherit;font-size:13px;padding:7px 8px}
+.carnet input:focus{border-color:var(--rouge);outline:none}
+.carnet-aide{padding:0 22px 16px;font-size:12.5px;font-weight:300;color:var(--gris)}
+
+/* Bandeau photo */
+.bandeau{position:relative;height:260px;background-size:cover;background-repeat:no-repeat;border-bottom:1px solid var(--ligne)}
+.bandeau::before{content:"";position:absolute;inset:0;background:var(--voile)}
+.bandeau .wrap{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding-block:32px}
+.bandeau h2{font-size:clamp(28px,5vw,46px);font-weight:700;text-transform:uppercase;line-height:1.05;max-width:18ch}
+
+/* Progression */
+.regles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.regle{border:1px solid var(--ligne);padding:20px 22px;display:flex;flex-direction:column;gap:8px;background:var(--anthracite-2)}
+.regle .k{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
+.regle h3{font-size:17px;font-weight:600}
+.regle p{font-size:14px;color:var(--gris)}
+.regle p b{color:var(--ecru);font-weight:500}
+
+.exemple{margin-top:28px;border:1px solid var(--ligne-forte)}
+.exemple-head{padding:14px 20px;border-bottom:1px solid var(--ligne);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.exemple-head b{font-weight:600}
+.exemple table{min-width:560px}
+.exemple td.ok{color:var(--ecru);font-weight:600}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--braise);color:var(--ecru);white-space:nowrap}
+.tag.go{background:var(--rouge);border-color:var(--rouge);color:var(--noir)}
+
+.rir{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne)}
+.rir div{background:var(--noir);padding:16px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.rir b{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.rir span{font-size:13px;color:var(--gris)}
+.rir .cible{background:var(--anthracite)}
+.rir .cible b{color:var(--rouge)}
+
+.etapes{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--ligne-forte);margin-left:6px}
+.etape{position:relative;padding:0 0 28px 28px;max-width:70ch}
+.etape:last-child{padding-bottom:0}
+.etape::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;background:var(--noir);border:2px solid var(--gris)}
+.etape:first-child::before{border-color:var(--rouge)}
+.etape .k{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris)}
+.etape h3{font-size:18px;font-weight:600;margin:2px 0 6px}
+.etape p{color:var(--gris);font-size:14.5px}
+.etape ul{margin:8px 0 0;padding-left:18px;color:var(--gris);font-size:14.5px}
+.etape li+li{margin-top:4px}
+
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--ligne)}
+.faq details{border-bottom:1px solid var(--ligne)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gris);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq .rep{padding:0 0 18px;color:var(--gris);font-size:14.5px;max-width:70ch}
+
+/* CTA */
+.cta{position:relative;background:url('assets/salle.jpg') center 30%/cover no-repeat;border-bottom:none}
+.cta::before{content:"";position:absolute;inset:0;background:rgba(6,6,6,.78)}
+.cta .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+.cta h2{font-size:clamp(26px,4vw,40px);font-weight:700;text-transform:uppercase;line-height:1.1}
+.cta p{color:var(--ecru);opacity:.85;margin-top:12px;max-width:52ch}
+.cta-box{background:var(--rouge);color:var(--noir);padding:26px 24px;display:flex;flex-direction:column;gap:6px}
+.cta-box .k{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.cta-box .mot{font-size:44px;font-weight:700;letter-spacing:4px;line-height:1}
+.cta-box .h{font-size:14px;font-weight:500}
+
+footer{padding-block:28px;font-size:12.5px;font-weight:300;color:var(--gris)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.btn-ghost{background:none;border:1px solid var(--ligne-forte);color:var(--gris);font:inherit;font-size:12px;padding:6px 10px;cursor:pointer}
+.btn-ghost:hover{color:var(--ecru);border-color:var(--gris)}
+.btn-ghost.confirm{border-color:var(--rouge);color:var(--ecru)}
+
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr;padding-block:32px;gap:24px}
+  .hero-photo{min-height:300px;order:-1}
+  .semaine{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rir{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cta .wrap{grid-template-columns:1fr}
+  section{padding-block:48px}
+  .bandeau{height:220px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .carnet input,.btn-ghost{transition:border-color .15s,color .15s}
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     ✏️  À REMPLIR POUR CHAQUE CLIENT — tout se passe dans le bloc PROGRAMME
+     plus bas (dans la balise <script>). Le reste de la page est commun
+     à tout le monde et ne se touche pas.
+     ===================================================================== -->
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <p class="eyebrow">Programmation seule · Evan Merioua Coaching</p>
+      <h1>Ton programme<span class="client" id="h-client">[Prénom]</span></h1>
+      <span class="barre"></span>
+      <p class="hero-sub" id="h-intro">Construit pour toi, à partir de ton bilan. Tout ce dont tu as besoin pour avancer en autonomie est sur cette page.</p>
+      <dl class="meta" id="h-meta"></dl>
+    </div>
+    <div class="hero-photo" role="img" aria-label="Evan Merioua de dos, salle de sport"><span>evan.merioua</span></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- AVANT DE COMMENCER -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Avant de commencer</p>
+        <h2>Comment fonctionne cette programmation</h2>
+      </div>
+      <p class="lead">Ce programme a été écrit pour toi : ton niveau, ton matériel, ton emploi du temps et ton objectif. C'est une <strong>programmation seule</strong> : il n'y a pas de suivi, pas de bilan hebdomadaire et pas d'ajustement de ma part en cours de route.</p>
+      <p class="lead">Tu as donc tout en main. En bas de la page, tu trouveras la méthode pour faire progresser tes charges, savoir quand changer quelque chose et faire évoluer le programme une fois le cycle terminé. Lis-la une fois en entier avant ta première séance.</p>
+      <div class="avertir">
+        <div><h3>Ce qui est inclus</h3><p>Ta semaine type, tes séances détaillées, un carnet pour noter tes charges et la méthode pour progresser seul.</p></div>
+        <div><h3>Ce qui n'est pas inclus</h3><p>Le suivi, les retours sur ta technique, les ajustements en cours de cycle et la nutrition personnalisée.</p></div>
+        <div><h3>Si tu as une douleur</h3><p>Une gêne articulaire n'est pas une courbature. Arrête l'exercice, remplace-le par une variante qui ne fait pas mal et consulte si ça persiste.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LÉGENDE -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Lire le programme</p>
+        <h2>Les abréviations de tes séances</h2>
+      </div>
+      <div class="legende">
+        <div><span>Séries × Reps</span><b>3 × 8–10</b><p>3 séries, entre 8 et 10 répétitions. La fourchette te sert à progresser.</p></div>
+        <div><span>RIR</span><b>RIR 2</b><p>Répétitions en réserve : tu t'arrêtes en sentant que tu aurais pu en faire encore 2 propres.</p></div>
+        <div><span>Repos</span><b>2'</b><p>Temps de récupération entre deux séries du même exercice. Chronomètre-le.</p></div>
+        <div><span>Tempo</span><b>3-1-1-0</b><p>Descente en 3 s, pause 1 s en bas, montée en 1 s, pas de pause en haut.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMAINE TYPE -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Ta semaine type</p>
+        <h2>Organisation de la semaine</h2>
+        <p>Tu peux décaler les jours selon ton emploi du temps. Garde simplement au moins un jour de repos entre deux séances qui travaillent les mêmes muscles.</p>
+      </div>
+      <div class="semaine" id="semaine"></div>
+    </div>
+  </section>
+
+  <!-- SÉANCES -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Tes séances</p>
+        <h2>Le détail de chaque séance</h2>
+        <p>Ouvre le carnet sous chaque séance pour noter ta charge et tes répétitions semaine après semaine. Il reste enregistré sur ton téléphone ou ton ordinateur.</p>
+      </div>
+      <div class="seances" id="seances"></div>
+    </div>
+  </section>
+
+  <!-- BANDEAU -->
+  <div class="bandeau" style="background-image:url('assets/barre.jpg');background-position:center 60%">
+    <div class="wrap">
+      <p class="eyebrow">Ton autonomie</p>
+      <h2>Comment progresser sans moi</h2>
+    </div>
+  </div>
+
+  <!-- PROGRESSION -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Méthode</p>
+        <h2>La double progression</h2>
+        <p>C'est la règle à appliquer sur tous tes exercices. Elle est simple, elle marche, et elle t'évite de deviner quand monter la charge.</p>
+      </div>
+
+      <div class="regles">
+        <div class="regle"><p class="k">Étape 1</p><h3>Choisis ta charge</h3><p>Prends une charge qui te permet de faire <b>le bas de la fourchette</b> sur toutes les séries, au RIR demandé.</p></div>
+        <div class="regle"><p class="k">Étape 2</p><h3>Ajoute des répétitions</h3><p>Garde la même charge et essaie de faire <b>une répétition de plus</b> par série d'une semaine à l'autre.</p></div>
+        <div class="regle"><p class="k">Étape 3</p><h3>Monte la charge</h3><p>Quand tu atteins <b>le haut de la fourchette sur toutes les séries</b>, augmente la charge et repars du bas de la fourchette.</p></div>
+      </div>
+
+      <div class="exemple">
+        <div class="exemple-head"><b>Exemple : développé couché, 3 × 8–10 à RIR 2</b><span class="muted">Combien ajouter : +1 à 2,5 kg sur le haut du corps, +2,5 à 5 kg sur le bas du corps.</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Semaine</th><th>Charge</th><th>Série 1</th><th>Série 2</th><th>Série 3</th><th>Décision</th></tr></thead>
+            <tbody>
+              <tr><td>S1</td><td>60 kg</td><td>9</td><td>8</td><td>8</td><td><span class="tag">On garde</span></td></tr>
+              <tr><td>S2</td><td>60 kg</td><td>10</td><td>9</td><td>8</td><td><span class="tag">On garde</span></td></tr>
+              <tr><td>S3</td><td>60 kg</td><td class="ok">10</td><td class="ok">10</td><td class="ok">10</td><td><span class="tag go">+2,5 kg</span></td></tr>
+              <tr><td>S4</td><td>62,5 kg</td><td>8</td><td>8</td><td>8</td><td><span class="tag">On garde</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIR -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Intensité</p>
+        <h2>Bien régler ton RIR</h2>
+        <p>Le RIR, c'est ce qui rend la progression fiable. Si tu t'arrêtes trop loin de l'échec, tu ne progresses pas. Si tu vas à l'échec à chaque série, tu récupères mal. Sois honnête avec toi-même.</p>
+      </div>
+      <div class="rir">
+        <div><b>4+</b><span>Facile. Tu pourrais en faire beaucoup plus.</span></div>
+        <div><b>3</b><span>Effort net, vitesse encore bonne.</span></div>
+        <div class="cible"><b>2</b><span>La barre ralentit. Zone cible la plupart du temps.</span></div>
+        <div class="cible"><b>1</b><span>Une dernière répétition possible, pas plus.</span></div>
+        <div><b>0</b><span>Échec. Plus aucune répétition propre possible.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAIRE ÉVOLUER -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Après le cycle</p>
+        <h2>Faire évoluer ton programme</h2>
+        <p>Un programme ne se change pas toutes les semaines. Tu le gardes tant que tu progresses, puis tu le fais évoluer petit à petit, dans cet ordre.</p>
+      </div>
+      <div class="etapes">
+        <div class="etape">
+          <p class="k">Tant que ça avance</p>
+          <h3>Ne change rien</h3>
+          <p>Si tes charges ou tes répétitions montent sur la majorité des exercices, garde exactement le même programme. La nouveauté n'est pas un critère.</p>
+        </div>
+        <div class="etape">
+          <p class="k">Quand un exercice bloque</p>
+          <h3>Diagnostique avant de changer</h3>
+          <p>Un exercice est bloqué quand il ne progresse plus sur <b>3 séances d'affilée</b>. Vérifie d'abord dans l'ordre :</p>
+          <ul>
+            <li>ton sommeil et ton alimentation de la semaine ;</li>
+            <li>tes temps de repos, souvent raccourcis sans s'en rendre compte ;</li>
+            <li>ton RIR, peut-être trop prudent ou au contraire toujours à l'échec.</li>
+          </ul>
+        </div>
+        <div class="etape">
+          <p class="k">Toutes les 6 à 8 semaines</p>
+          <h3>Fais une semaine allégée</h3>
+          <p>Si la fatigue s'accumule ou que plusieurs exercices stagnent en même temps, fais une semaine avec les mêmes séances mais <b>une série de moins par exercice</b> et un RIR de 3 à 4. Tu repars ensuite plus frais.</p>
+        </div>
+        <div class="etape">
+          <p class="k">Si ça bloque toujours</p>
+          <h3>Change un seul élément à la fois</h3>
+          <ul>
+            <li>Remplace l'exercice bloqué par une variante proche (barre → haltères, guidée → libre, changement d'inclinaison).</li>
+            <li>Ou change la fourchette de répétitions (par exemple 8–10 → 6–8 ou 10–12).</li>
+            <li>Ou ajoute une série sur le muscle que tu veux prioriser, sans en ajouter partout.</li>
+          </ul>
+        </div>
+        <div class="etape">
+          <p class="k">Fin du cycle</p>
+          <h3>Repars sur un nouveau cycle</h3>
+          <p>À la fin de la durée prévue, garde la même structure de semaine, remplace 1 à 2 exercices par séance et repars sur des charges un peu plus basses pour reconstruire une nouvelle progression.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU 2 -->
+  <div class="bandeau" style="background-image:url('assets/halteres.jpg');background-position:center 40%">
+    <div class="wrap">
+      <p class="eyebrow">Au quotidien</p>
+      <h2>Les questions qu'on me pose le plus</h2>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="faq">
+        <details><summary>Comment je m'échauffe ?</summary><div class="rep">5 minutes de cardio léger, puis sur le premier exercice de chaque groupe musculaire : 2 à 3 séries de montée en charge (environ 50 %, 70 % puis 85 % de ta charge de travail) avec peu de répétitions. Les séries d'échauffement ne comptent pas dans les séries du programme.</div></details>
+        <details><summary>J'ai raté une séance, je fais quoi ?</summary><div class="rep">Tu reprends simplement à la séance suivante dans l'ordre, sans essayer de rattraper en doublant. Si tu rates une semaine entière, reprends avec des charges un peu plus basses la première séance.</div></details>
+        <details><summary>Une machine est prise ou je n'ai pas le matériel.</summary><div class="rep">Remplace par un exercice qui travaille le même muscle dans le même type de mouvement (une presse par un squat guidé, un tirage poulie par un rowing haltère). Note le changement dans ton carnet pour comparer ce qui est comparable.</div></details>
+        <details><summary>Je peux ajouter des exercices ?</summary><div class="rep">Le volume est calculé pour que tu récupères. Ajouter des exercices, c'est souvent progresser moins. Si tu veux insister sur un muscle, ajoute au maximum une série sur un exercice qui le cible déjà.</div></details>
+        <details><summary>Et le cardio ?</summary><div class="rep">Il est compatible. Évite simplement le cardio intense juste avant une séance de jambes. Marcher tous les jours aide à récupérer et ne gêne pas ta progression.</div></details>
+        <details><summary>Qu'est-ce qui compte en dehors de la salle ?</summary><div class="rep">Le sommeil (7 à 9 h), assez de protéines chaque jour et la régularité. Un programme moyen suivi pendant des mois bat toujours un programme parfait suivi trois semaines.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Aller plus loin</p>
+        <h2>Tu veux un suivi pour ta prochaine étape ?</h2>
+        <p>Avec le coaching suivi, j'ajuste ton programme en continu, je corrige ta technique et on fait le point régulièrement ensemble.</p>
+      </div>
+      <div class="cta-box">
+        <p class="k">Envoie-moi en DM</p>
+        <p class="mot">PRÉPA</p>
+        <p class="h">sur Instagram · @evan.merioua</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="f-date">Evan Merioua Coaching</span>
+    <button type="button" class="btn-ghost" id="reset">Effacer mon carnet</button>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   ✏️  PROGRAMME DU CLIENT — la seule partie à modifier
+   ---------------------------------------------------------------------
+   - Laisse un champ vide ("") et il s'affichera comme "à compléter".
+   - Ajoute ou retire des séances / exercices en copiant un bloc { ... }.
+   - "semaine" : 7 cases du lundi au dimanche. Mets la lettre d'une séance
+     ("A", "B"...) ou "" pour un jour de repos.
+   ===================================================================== */
+const PROGRAMME = {
+  client:     "",            // ex. "Mathis"
+  objectif:   "",            // ex. "Prise de masse"
+  duree:      "",            // ex. "8 semaines"
+  frequence:  "",            // ex. "4 séances / semaine"
+  niveau:     "",            // ex. "Intermédiaire"
+  debut:      "",            // ex. "14 octobre 2026"
+  intro:      "",            // phrase d'intro perso (facultatif)
+  semainesCarnet: 8,         // nombre de colonnes dans le carnet de charges
+
+  semaine: ["A", "B", "", "C", "D", "", ""],
+
+  seances: [
+    { id: "A", nom: "", focus: "", echauffement: "",
+      exercices: [
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
+      ] },
+    { id: "B", nom: "", focus: "", echauffement: "",
+      exercices: [
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
+      ] },
+    { id: "C", nom: "", focus: "", echauffement: "",
+      exercices: [
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
+      ] },
+    { id: "D", nom: "", focus: "", echauffement: "",
+      exercices: [
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" },
+        { nom: "", series: "", reps: "", rir: "", repos: "", tempo: "", note: "" }
+      ] }
+  ]
+};
+/* ===================== fin de la partie à modifier ===================== */
+
+(function () {
+  const P = PROGRAMME;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const val = (v, ph) => v ? esc(v) : `<span class="vide">${ph || "à compléter"}</span>`;
+  const $ = id => document.getElementById(id);
+
+  // En-tête
+  if (P.client) { $("h-client").textContent = P.client; document.title = "Programme " + P.client + " · Evan Merioua"; }
+  else $("h-client").innerHTML = '<span class="vide" style="font-style:normal">[Prénom]</span>';
+  if (P.intro) $("h-intro").textContent = P.intro;
+  $("h-meta").innerHTML = [["Objectif", P.objectif], ["Durée", P.duree], ["Fréquence", P.frequence], ["Niveau", P.niveau], ["Début", P.debut]]
+    .map(([k, v]) => `<div><dt>${k}</dt><dd>${val(v, "—")}</dd></div>`).join("");
+  if (P.debut) $("f-date").textContent = "Evan Merioua Coaching · Programme remis le " + P.debut;
+
+  // Semaine
+  const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+  const parId = Object.fromEntries(P.seances.map(s => [s.id, s]));
+  $("semaine").innerHTML = jours.map((j, i) => {
+    const id = P.semaine[i];
+    if (!id) return `<div class="jour repos"><span class="j">${j}</span><span class="s">Repos</span></div>`;
+    const s = parId[id];
+    return `<div class="jour on"><span class="j">${j}</span><span class="s">Séance ${esc(id)}${s && s.nom ? "<br>" + esc(s.nom) : ""}</span></div>`;
+  }).join("");
+
+  // Carnet (stocké dans le navigateur du client)
+  const cle = "carnet:" + (P.client || "modele");
+  let carnet = {};
+  try { carnet = JSON.parse(localStorage.getItem(cle) || "{}"); } catch (e) { carnet = {}; }
+  const sauver = () => { try { localStorage.setItem(cle, JSON.stringify(carnet)); } catch (e) {} };
+  const nbSem = Math.max(1, P.semainesCarnet || 8);
+
+  // Séances
+  $("seances").innerHTML = P.seances.map(s => {
+    const lignes = s.exercices.map((e, i) => `<tr>
+        <td class="n">${i + 1}</td><td class="ex">${val(e.nom, "Exercice")}</td>
+        <td>${val(e.series, "–")}</td><td>${val(e.reps, "–")}</td><td>${val(e.rir, "–")}</td>
+        <td>${val(e.repos, "–")}</td><td>${val(e.tempo, "–")}</td><td class="note">${e.note ? esc(e.note) : ""}</td></tr>`).join("");
+    const head = Array.from({ length: nbSem }, (_, k) => `<th>S${k + 1}</th>`).join("");
+    const carnetLignes = s.exercices.map((e, i) => `<tr><td class="ex">${val(e.nom, "Exercice " + (i + 1))}</td>` +
+      Array.from({ length: nbSem }, (_, k) => {
+        const id = `c-${s.id}-${i}-${k}`;
+        return `<td><input id="${id}" data-k="${id}" inputmode="text" placeholder="kg × reps" aria-label="Séance ${esc(s.id)}, exercice ${i + 1}, semaine ${k + 1}" value="${esc(carnet[id] || "")}"></td>`;
+      }).join("") + `</tr>`).join("");
+    return `<article class="seance">
+      <div class="seance-top">
+        <h3><em>${esc(s.id)}</em>${s.nom ? esc(s.nom) : '<span class="vide">Nom de la séance</span>'}</h3>
+        <p>${s.focus ? esc(s.focus) : '<span class="vide">Focus de la séance</span>'}</p>
+      </div>
+      ${s.echauffement ? `<p class="echauf"><b>Échauffement :</b> ${esc(s.echauffement)}</p>` : ""}
+      <div class="table-scroll"><table>
+        <thead><tr><th>#</th><th>Exercice</th><th>Séries</th><th>Reps</th><th>RIR</th><th>Repos</th><th>Tempo</th><th>Notes</th></tr></thead>
+        <tbody>${lignes}</tbody>
+      </table></div>
+      <details class="carnet"><summary>Mon carnet de charges</summary>
+        <p class="carnet-aide">Note par exemple « 60 × 10/9/8 » : la charge puis les répétitions de chaque série.</p>
+        <div class="table-scroll"><table><thead><tr><th>Exercice</th>${head}</tr></thead><tbody>${carnetLignes}</tbody></table></div>
+      </details>
+    </article>`;
+  }).join("");
+
+  document.addEventListener("input", ev => {
+    const k = ev.target.dataset && ev.target.dataset.k;
+    if (!k) return;
+    carnet[k] = ev.target.value; sauver();
+  });
+
+  // Effacer le carnet, avec confirmation dans la page
+  const btn = $("reset"); let arme = false, t;
+  btn.addEventListener("click", () => {
+    if (!arme) { arme = true; btn.textContent = "Confirmer l'effacement ?"; btn.classList.add("confirm");
+      t = setTimeout(() => { arme = false; btn.textContent = "Effacer mon carnet"; btn.classList.remove("confirm"); }, 4000); return; }
+    clearTimeout(t); carnet = {}; sauver();
+    document.querySelectorAll(".carnet input").forEach(i => i.value = "");
+    arme = false; btn.textContent = "Carnet effacé"; btn.classList.remove("confirm");
+  });
+})();
+</script>
+</body>
+</html>
