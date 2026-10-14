@@ -286,8 +286,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
         <p>Ce programme a des chances de te tenir pendant 6 mois, 10 mois, 1 an ou plus : la musculation est un sport de patience. Le plus important est de progresser chaque semaine sur les mêmes exercices, avec la même technique, chaque semaine. Ta programmation ne devra changer que lorsque ton physique et ton efficacité à l'entraînement auront réellement changé — pas par simple envie de changement.</p>
       </div>
 
-      <div class="sous"><h3>Évolutions à venir</h3></div>
-      <div class="texte" id="p-evolutions"></div>
+      <div id="bloc-evolutions">
+        <div class="sous"><h3>Évolutions à venir</h3></div>
+        <div class="texte" id="p-evolutions"></div>
+      </div>
     </div>
   </section>
 
@@ -481,7 +483,7 @@ const PROGRAMME = {
   /* ---------- 02 PROGRAMME ---------- */
   choixSplit: "",            // pourquoi ce split (ex. "On repasse sur un Upper/Lower classique car…")
   structure:  [""],          // paragraphe(s) "Premier bloc : …"
-  focus:      [""],          // paragraphe(s) sur le focus du programme
+  focus:      [""],          // paragraphe(s) sur le focus du programme — [] pour masquer
 
   seances: [
     { lettre: "A", nom: "", note: "",
@@ -503,7 +505,7 @@ const PROGRAMME = {
       ] }
   ],
 
-  evolutions: ["", ""],      // paragraphe(s) "Évolutions à venir"
+  evolutions: ["", ""],      // paragraphe(s) "Évolutions à venir" — [] pour masquer
 
   semainesCarnet: 8          // nombre de colonnes dans le carnet de charges
 };
@@ -516,7 +518,8 @@ const PROGRAMME = {
   // texte riche autorisé (<b>) : on garde uniquement b/strong/em/br
   const riche = s => esc(s).replace(/&lt;(\/?)(b|strong|em|br)&gt;/g, "<$1$2>");
   const ou = (v, ph) => v ? riche(v) : `<span class="vide">${ph}</span>`;
-  const paras = (arr, ph) => (arr && arr.length ? arr : [""]).map(t => `<p>${ou(t, ph)}</p>`).join("");
+  // [] = bloc masqué ; [""] = bloc à compléter
+  const paras = (arr, ph) => (arr || [""]).map(t => `<p>${ou(t, ph)}</p>`).join("");
 
   // En-tête
   if (P.client) { $("h-client").textContent = P.client; document.title = "Espace client " + P.client + " · Evan Merioua"; }
@@ -533,6 +536,8 @@ const PROGRAMME = {
   $("p-structure").innerHTML = paras(P.structure, "Premier bloc : à compléter");
   $("p-focus").innerHTML = paras(P.focus, "Focus du programme : à compléter");
   $("p-evolutions").innerHTML = paras(P.evolutions, "à compléter");
+  if (P.evolutions && !P.evolutions.length) $("bloc-evolutions").hidden = true;
+  if (P.focus && !P.focus.length) $("p-focus").hidden = true;
 
   // Carnet (enregistré dans le navigateur du client)
   const cle = "carnet:" + (P.client || "modele");
